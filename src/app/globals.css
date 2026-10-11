@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/*
+ * OptivanceSoft design tokens.
+ * Brand blue (#0878F9) is used for accents, icons and large elements; the deeper
+ * brand-600 carries white text (buttons) and small link text to meet WCAG AA.
+ */
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --color-navy-950: #071a2f;
+  --color-navy-900: #0b2440;
+  --color-navy-800: #12325a;
+
+  --color-brand-50: #eef5ff;
+  --color-brand-100: #d9e9ff;
+  --color-brand-200: #b5d5ff;
+  --color-brand-300: #4fa3ff;
+  --color-brand-500: #0878f9;
+  --color-brand-600: #0067db;
+  --color-brand-700: #0558b8;
+
+  --color-ink: #102542;
+  --color-muted: #5b6b82;
+  --color-muted-dark: #9fb0c6;
+  --color-surface: #f5f8fc;
+  --color-line: #e2e9f2;
+  --color-line-strong: #cfd9e6;
+
+  --shadow-card: 0 1px 2px rgb(16 37 66 / 0.04), 0 4px 16px -4px rgb(16 37 66 / 0.08);
+  --shadow-raised: 0 2px 4px rgb(16 37 66 / 0.04), 0 16px 40px -12px rgb(16 37 66 / 0.18);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-100);
+    color: var(--color-navy-950);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
