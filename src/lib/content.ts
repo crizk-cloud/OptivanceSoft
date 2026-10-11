@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Boxes,
-  Compass,
+  Factory,
   Gauge,
   Lightbulb,
   MousePointerClick,
@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 export type Feature = { icon: LucideIcon; title: string; body: string };
+export type Stat = { icon: LucideIcon; value: string; label: string };
 
 export const benefits: Feature[] = [
   {
@@ -36,28 +37,12 @@ export const benefits: Feature[] = [
 ];
 
 /**
- * Non-numeric company highlights. These describe what OptivanceSoft offers;
- * they are not evidence of customer adoption.
+ * Company figures for the overview section. Only verifiable facts about
+ * OptivanceSoft itself; add customer or usage figures only once confirmed.
  */
-export const highlights: Feature[] = [
-  {
-    icon: Boxes,
-    title: "Four software products",
-    body: "Campus Call, Athletix School, Grow Manager and Service Hub.",
-  },
-  {
-    icon: Compass,
-    title: "Multiple industries served",
-    body: "Education, school athletics, agriculture and real estate.",
-  },
-  {
-    icon: Target,
-    title: "One unified product vision",
-    body: "Every product shares the same goal: software that brings out your best.",
-  },
-  {
-    icon: RefreshCw,
-    title: "Continuous product improvement",
-    body: "Our products keep evolving with the needs of the people who use them.",
-  },
+export const stats: Stat[] = [
+  { icon: Boxes, value: "4", label: "Software products" },
+  { icon: Factory, value: "4", label: "Industries served" },
+  { icon: Target, value: "1", label: "Shared vision" },
+  { icon: RefreshCw, value: "Always", label: "Improving" },
 ];

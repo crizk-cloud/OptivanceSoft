@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import type { CSSProperties } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -7,20 +8,25 @@ import {
   ClipboardList,
   Eye,
   Flag,
+  GraduationCap,
   HeartHandshake,
   Home,
   KeyRound,
   LayoutDashboard,
+  Leaf,
   Megaphone,
   MessagesSquare,
   Package,
-  Sprout,
   Trophy,
   Users,
   Workflow,
   Wrench,
 } from "lucide-react";
 
+import athletixImage from "@/assets/products/athletix-school.jpg";
+import campusCallImage from "@/assets/products/campus-call.jpg";
+import growManagerImage from "@/assets/products/grow-manager.jpg";
+import serviceHubImage from "@/assets/products/service-hub.jpg";
 import type { ProductSlug } from "./productSlugs";
 
 export type { ProductSlug };
@@ -48,6 +54,9 @@ export type Product = {
   valueProp: string;
   description: string;
   icon: LucideIcon;
+  /** Industry photo used on product cards. */
+  image: StaticImageData;
+  imageAlt: string;
   /** 3–6 capabilities. Only what the product is confirmed to focus on. */
   features: ProductFeature[];
   benefits: ProductBenefit[];
@@ -84,7 +93,9 @@ export const products: Product[] = [
     valueProp: "Keep your whole school community informed and connected.",
     description:
       "Connect schools, parents, and communities with a simple, all-in-one communication platform.",
-    icon: Megaphone,
+    icon: GraduationCap,
+    image: campusCallImage,
+    imageAlt: "Students at their desks watching a teacher present in a bright classroom",
     features: [
       {
         icon: MessagesSquare,
@@ -153,6 +164,8 @@ export const products: Product[] = [
     description:
       "Manage teams, events, schedules, and athlete engagement for a more organized sports program.",
     icon: Trophy,
+    image: athletixImage,
+    imageAlt: "Sprinters set in their starting blocks on a red running track",
     features: [
       {
         icon: Users,
@@ -214,7 +227,7 @@ export const products: Product[] = [
       },
     ],
     ctaLabel: CTA_LABEL,
-    theme: { accent: "#7C3AED", strong: "#6D28D9", soft: "#F5F3FF", muted: "#DDD6FE" },
+    theme: { accent: "#E5372B", strong: "#C42B20", soft: "#FEF2F1", muted: "#FBC9C4" },
   },
   {
     slug: "grow-manager",
@@ -224,7 +237,9 @@ export const products: Product[] = [
     valueProp: "Organize your farm operations and see clearly what’s happening.",
     description:
       "Organize agricultural operations, track activities, manage resources, and make smarter decisions.",
-    icon: Sprout,
+    icon: Leaf,
+    image: growManagerImage,
+    imageAlt: "A tractor working rows of green crops on farmland at sunrise",
     features: [
       {
         icon: ClipboardList,
@@ -291,6 +306,8 @@ export const products: Product[] = [
     description:
       "Manage properties, tenants, maintenance, and related operations with a centralized management solution.",
     icon: Building2,
+    image: serviceHubImage,
+    imageAlt: "Modern apartment buildings with glass balconies along a landscaped street",
     features: [
       {
         icon: Home,
@@ -346,7 +363,7 @@ export const products: Product[] = [
       },
     ],
     ctaLabel: CTA_LABEL,
-    theme: { accent: "#D97706", strong: "#B45309", soft: "#FFFBEB", muted: "#FDE68A" },
+    theme: { accent: "#7C4DFF", strong: "#5B33D6", soft: "#F4F0FF", muted: "#D9CCFF" },
   },
 ];
 

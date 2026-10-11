@@ -51,10 +51,11 @@ export function SiteFooter() {
           })}
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6 text-sm">
+        <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm sm:flex-row sm:justify-between">
           <p>
             © <CopyrightYear /> {site.name}. All rights reserved.
           </p>
+          <p>{site.tagline}</p>
         </div>
       </Container>
     </footer>

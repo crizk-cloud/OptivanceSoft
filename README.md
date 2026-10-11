@@ -61,7 +61,7 @@ src/
                        ContactDetails
     contact/           Contact form (client) and URL-aware wrapper
     legal/             Layout for Privacy Policy and Terms drafts
-    products/          Product card, icon, CSS visuals, dashboard preview and
+    products/          Product card (with industry photo), icon, dashboard preview and
                        the shared ProductPageTemplate
     home/              Hero device illustration
   lib/
@@ -87,6 +87,7 @@ Official vector artwork lives in `docs/brand/vector/` (source of truth):
 | `public/brand/optivancesoft-mark.png` | 512px render of the mark for structured data |
 | `src/app/icon.svg`, `src/app/favicon.ico` | Browser icons generated from the mark |
 | `src/app/apple-icon.png` | Home-screen icon generated from the dark app icon |
+| `src/assets/products/*.jpg` | Industry photos for the product cards (resized and served as WebP/AVIF by `next/image`) |
 | `src/lib/og/fonts/` | Montserrat (SIL Open Font License, `OFL.txt`) for social image text |
 
 `<Logo tagline />` adds the slogan "Software that brings out your best." as text under

@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "secondary" | "ghost" | "inverse";
+type Variant = "primary" | "secondary" | "outline" | "ghost" | "inverse" | "outlineInverse";
 type Size = "md" | "lg";
 
 const base =
@@ -12,8 +12,10 @@ const variants: Record<Variant, string> = {
   primary: "bg-brand-600 text-white shadow-sm hover:bg-brand-700 hover:shadow-md active:bg-brand-700",
   secondary:
     "border border-line-strong bg-white text-ink shadow-sm hover:border-brand-200 hover:bg-brand-50",
+  outline: "border-2 border-brand-600 bg-white/60 text-brand-600 hover:bg-brand-50",
   ghost: "text-ink hover:bg-surface",
   inverse: "bg-white text-navy-950 shadow-sm hover:bg-brand-50",
+  outlineInverse: "border-2 border-white/70 text-white hover:border-white hover:bg-white/10",
 };
 
 const sizes: Record<Size, string> = {

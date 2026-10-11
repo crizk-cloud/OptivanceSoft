@@ -12,7 +12,7 @@ import { productHref, products, themeStyle } from "@/lib/products";
 import { mainNav } from "@/lib/site";
 
 const linkClass =
-  "rounded-md px-3 py-2 text-sm font-medium text-muted-dark transition-colors duration-150 hover:text-white aria-[current=page]:text-white";
+  "relative rounded-md px-3 py-2 text-sm font-medium text-muted-dark transition-colors duration-150 hover:text-white aria-[current=page]:text-white aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-3 aria-[current=page]:after:-bottom-[13px] aria-[current=page]:after:h-0.5 aria-[current=page]:after:rounded-full aria-[current=page]:after:bg-brand-300";
 
 function ProductsMenu() {
   const [open, setOpen] = useState(false);

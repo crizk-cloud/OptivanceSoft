@@ -7,7 +7,7 @@ import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow, Section, SectionHeading } from "@/components/ui/Section";
-import { benefits, highlights } from "@/lib/content";
+import { benefits, stats } from "@/lib/content";
 import { products } from "@/lib/products";
 import { pageMetadata, siteUrl } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -83,7 +83,7 @@ export default function HomePage() {
                 Explore Our Products
                 <ArrowRight className="size-4" aria-hidden />
               </ButtonLink>
-              <ButtonLink href="/about" size="lg" variant="secondary">
+              <ButtonLink href="/about" size="lg" variant="outline">
                 About Our Company
               </ButtonLink>
             </div>
@@ -112,17 +112,17 @@ export default function HomePage() {
       <Section id="why-optivancesoft" tone="surface" aria-labelledby="why-title">
         <SectionHeading
           id="why-title"
-          eyebrow="Why OptivanceSoft"
+          eyebrow="Why Choose OptivanceSoft"
           title="Built for Real People. Designed for Real Results."
-          description="We focus on the everyday work of the organizations we serve, and build software that makes that work simpler."
+          align="center"
         />
         <div className="mt-12">
-          <FeatureGrid items={benefits} />
+          <FeatureGrid items={benefits} variant="inline" />
         </div>
       </Section>
 
       <Section aria-labelledby="overview-title">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.4fr] lg:gap-16">
           <div>
             <Eyebrow>Company Overview</Eyebrow>
             <h2
@@ -135,16 +135,26 @@ export default function HomePage() {
               From classrooms to playing fields, from farms to properties, OptivanceSoft helps
               organizations operate more efficiently and achieve their goals.
             </p>
-            <ButtonLink href="/about" variant="secondary" className="mt-8">
-              Learn about OptivanceSoft
+            <ButtonLink href="/about" className="mt-8">
+              Our Story
               <ArrowRight className="size-4" aria-hidden />
             </ButtonLink>
           </div>
-          <FeatureGrid items={highlights} columns={2} variant="plain" />
+          <ul className="grid grid-cols-2 gap-y-10 self-center sm:grid-cols-4 sm:divide-x sm:divide-line">
+            {stats.map(({ icon: Icon, value, label }) => (
+              <li key={label} className="flex flex-col items-center px-4 text-center">
+                <span className="inline-flex size-14 items-center justify-center rounded-full bg-brand-50 text-brand-500 ring-1 ring-brand-100">
+                  <Icon className="size-6" aria-hidden strokeWidth={1.75} />
+                </span>
+                <span className="mt-4 text-3xl font-bold tracking-tight text-ink">{value}</span>
+                <span className="mt-1 text-sm text-muted">{label}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </Section>
 
-      <CtaBand flush />
+      <CtaBand />
     </>
   );
 }

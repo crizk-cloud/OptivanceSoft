@@ -8,7 +8,7 @@ export function FeatureGrid({
 }: {
   items: Feature[];
   columns?: 2 | 4;
-  variant?: "card" | "plain";
+  variant?: "card" | "inline";
 }) {
   return (
     <ul
@@ -17,28 +17,30 @@ export function FeatureGrid({
         columns === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-2",
       )}
     >
-      {items.map(({ icon: Icon, title, body }) => (
+      {items.map(({ icon: Icon, title, body }) =>
+        variant === "inline" ? (
+          <li key={title} className="flex gap-4">
+            <span className="inline-flex size-14 shrink-0 items-center justify-center rounded-full bg-white text-brand-500 shadow-card ring-1 ring-line">
+              <Icon className="size-6" aria-hidden strokeWidth={2} />
+            </span>
+            <div>
+              <h3 className="text-lg font-semibold text-ink">{title}</h3>
+              <p className="mt-1 leading-relaxed text-muted">{body}</p>
+            </div>
+          </li>
+        ) : (
         <li
           key={title}
-          className={
-            variant === "card"
-              ? "rounded-2xl border border-line bg-white p-6 shadow-card"
-              : "border-t border-line-strong pt-6"
-          }
+          className="rounded-2xl border border-line bg-white p-6 shadow-card"
         >
-          <span
-            className={
-              variant === "card"
-                ? "inline-flex size-11 items-center justify-center rounded-xl bg-navy-950 text-white"
-                : "inline-flex size-10 items-center justify-center rounded-lg bg-brand-50 text-brand-500 ring-1 ring-brand-100"
-            }
-          >
+          <span className="inline-flex size-11 items-center justify-center rounded-xl bg-navy-950 text-white">
             <Icon className="size-5" aria-hidden strokeWidth={1.75} />
           </span>
           <h3 className="mt-5 text-lg font-semibold text-ink">{title}</h3>
           <p className="mt-2 leading-relaxed text-muted">{body}</p>
         </li>
-      ))}
+        ),
+      )}
     </ul>
   );
 }

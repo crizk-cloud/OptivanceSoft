@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { productHref, themeStyle, type Product } from "@/lib/products";
-import { ProductVisual } from "./ProductVisual";
 
 export function ProductIcon({ product, size = "md" }: { product: Product; size?: "sm" | "md" }) {
   const Icon = product.icon;
@@ -19,30 +19,43 @@ export function ProductIcon({ product, size = "md" }: { product: Product; size?:
   );
 }
 
+/**
+ * Product card: industry photo with the product's icon badge overlapping its
+ * lower edge, then name, category, description and a Learn more link.
+ */
 export function ProductCard({ product }: { product: Product }) {
   const titleId = `${product.slug}-title`;
+  const Icon = product.icon;
   return (
     <article
       aria-labelledby={titleId}
       style={themeStyle(product)}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-(--accent-muted) hover:shadow-raised motion-safe:hover:-translate-y-0.5"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-(--accent-muted) hover:shadow-raised motion-safe:hover:-translate-y-1"
     >
-      <ProductVisual slug={product.slug} className="aspect-[16/9] border-b border-line" />
-      <div className="flex flex-1 flex-col p-6">
-        <div className="flex items-center gap-3">
-          <ProductIcon product={product} size="sm" />
-          <p className="text-xs font-semibold tracking-wide text-muted uppercase">{product.industry}</p>
-        </div>
-        <h3 id={titleId} className="mt-4 text-xl font-semibold tracking-tight text-ink">
+      <div className="relative aspect-[16/10] overflow-hidden bg-surface">
+        <Image
+          src={product.image}
+          alt={product.imageAlt}
+          fill
+          sizes="(min-width: 1280px) 300px, (min-width: 640px) 50vw, 100vw"
+          placeholder="blur"
+          className="object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.04]"
+        />
+      </div>
+      <div className="relative flex flex-1 flex-col px-6 pb-6">
+        <span className="-mt-7 mb-4 inline-flex size-14 items-center justify-center self-start rounded-2xl bg-(--accent) text-white shadow-lg ring-4 ring-white">
+          <Icon className="size-6" aria-hidden strokeWidth={2} />
+        </span>
+        <h3 id={titleId} className="text-xl font-bold tracking-tight text-ink">
           {product.name}
         </h3>
-        <p className="mt-1 text-sm font-medium text-(--accent-strong)">{product.category}</p>
+        <p className="mt-1 text-[0.95rem] font-medium text-ink/80">{product.category}</p>
         <p className="mt-3 flex-1 leading-relaxed text-muted">{product.description}</p>
         <Link
           href={productHref(product.slug)}
-          className="mt-6 inline-flex items-center gap-1.5 self-start rounded-md text-sm font-semibold text-(--accent-strong) after:absolute after:inset-0 hover:underline hover:underline-offset-4"
+          className="mt-6 inline-flex items-center gap-1.5 self-start rounded-md text-sm font-semibold text-brand-600 after:absolute after:inset-0 hover:text-brand-700"
         >
-          Learn more<span className="sr-only"> about {product.name}</span>
+          Learn More<span className="sr-only"> about {product.name}</span>
           <ArrowRight
             className="size-4 transition-transform duration-150 group-hover:translate-x-0.5"
             aria-hidden
