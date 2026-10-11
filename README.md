@@ -48,4 +48,5 @@ Defined in `src/app/globals.css` under `@theme` and available as Tailwind utilit
 | `ink`        | `#102542` | Primary text                                |
 | `muted`      | `#5B6B82` | Secondary text                              |
 
-Contact details and social links live in `src/lib/site.ts` and are hidden until filled in.\nPrivacy Policy and Terms of Service pages show a notice until the approved text is added.
+Contact details and social links live in `src/lib/site.ts` and are hidden until filled in.
+Privacy Policy and Terms of Service pages show a notice until the approved text is added.
