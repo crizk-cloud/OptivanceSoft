@@ -26,7 +26,7 @@ export function ProductDashboard({ product }: { product: Product }) {
                 <span className="truncate">{product.name}</span>
               </div>
               <ul className="mt-5 space-y-1 text-xs">
-                {product.features.map((f, i) => (
+                {product.features.slice(0, 6).map((f, i) => (
                   <li
                     key={f.title}
                     className={

@@ -56,8 +56,8 @@ export default function AboutPage() {
           <div className="space-y-5 text-lg leading-relaxed text-muted">
             <p>
               OptivanceSoft creates practical digital products for organizations across multiple
-              industries. Each of our products focuses on a specific field, from school
-              communication and athletics to agriculture and real estate.
+              industries. Each of our products focuses on a specific field, from campus
+              operations and school athletics to agriculture and real estate.
             </p>
             <p>
               What connects them is a shared approach: software should be useful, intuitive and

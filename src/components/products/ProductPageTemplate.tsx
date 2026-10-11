@@ -75,13 +75,27 @@ export function ProductPageTemplate({ product }: { product: Product }) {
         </Container>
       </section>
 
+      {/* Overview (optional) */}
+      {product.overview && (
+        <Section aria-labelledby="overview-title">
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
+            <SectionHeading accent id="overview-title" eyebrow="Overview" title={product.overview.title} />
+            <div className="space-y-5 text-lg leading-relaxed text-muted">
+              {product.overview.paragraphs.map((p) => (
+                <p key={p.slice(0, 40)}>{p}</p>
+              ))}
+            </div>
+          </div>
+        </Section>
+      )}
+
       {/* Features */}
-      <Section aria-labelledby="features-title">
+      <Section tone={product.overview ? "surface" : "white"} aria-labelledby="features-title">
         <SectionHeading
           accent
           id="features-title"
-          eyebrow="Features"
-          title={`What ${product.name} helps you do`}
+          eyebrow={product.featuresHeading?.eyebrow ?? "Features"}
+          title={product.featuresHeading?.title ?? `What ${product.name} helps you do`}
         />
         <ul
           className={cn(
@@ -102,14 +116,17 @@ export function ProductPageTemplate({ product }: { product: Product }) {
       </Section>
 
       {/* Benefits */}
-      <Section tone="surface" aria-labelledby="benefits-title">
+      <Section tone={product.overview ? "white" : "surface"} aria-labelledby="benefits-title">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
           <SectionHeading
           accent
             id="benefits-title"
-            eyebrow="Why it matters"
-            title="The problems it addresses"
-            description={`${product.name} is built around everyday challenges in ${product.industry.toLowerCase()}.`}
+            eyebrow={product.benefitsHeading?.eyebrow ?? "Why it matters"}
+            title={product.benefitsHeading?.title ?? "The problems it addresses"}
+            description={
+              product.benefitsHeading?.description ??
+              `${product.name} is built around everyday challenges in ${product.industry.toLowerCase()}.`
+            }
           />
           <ul className="space-y-4">
             {product.benefits.map((b) => (
@@ -128,7 +145,7 @@ export function ProductPageTemplate({ product }: { product: Product }) {
       </Section>
 
       {/* Audience */}
-      <Section aria-labelledby="audience-title">
+      <Section tone={product.overview ? "surface" : "white"} aria-labelledby="audience-title">
         <SectionHeading accent id="audience-title" eyebrow="Who it’s for" title="Designed for" />
         <ul
           className={cn(
@@ -149,7 +166,7 @@ export function ProductPageTemplate({ product }: { product: Product }) {
       </Section>
 
       {/* FAQ */}
-      <Section tone="surface" aria-labelledby="faq-title">
+      <Section tone={product.overview ? "white" : "surface"} aria-labelledby="faq-title">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
           <div>
             <Eyebrow accent>FAQ</Eyebrow>

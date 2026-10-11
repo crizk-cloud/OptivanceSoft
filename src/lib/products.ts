@@ -7,19 +7,26 @@ import {
   CalendarDays,
   ClipboardList,
   Eye,
+  FileSignature,
+  Fingerprint,
   Flag,
   GraduationCap,
-  HeartHandshake,
+  Headset,
   Home,
   KeyRound,
   LayoutDashboard,
   Leaf,
-  Megaphone,
   MessagesSquare,
+  Network,
   Package,
+  School,
+  ShieldAlert,
+  ShoppingCart,
+  Smartphone,
+  Tags,
   Trophy,
   Users,
-  Workflow,
+  Warehouse,
   Wrench,
 } from "lucide-react";
 
@@ -46,7 +53,7 @@ export type ProductTheme = { accent: string; strong: string; soft: string; muted
 export type Product = {
   slug: ProductSlug;
   name: string;
-  /** Short category line, e.g. "School Communication and Engagement". */
+  /** Short category line, e.g. "Integrated Campus Operations Platform". */
   category: string;
   /** Industry served, used for labels. */
   industry: string;
@@ -57,8 +64,14 @@ export type Product = {
   /** Industry photo used on product cards. */
   image: StaticImageData;
   imageAlt: string;
-  /** 3–6 capabilities. Only what the product is confirmed to focus on. */
+  /** Optional longer introduction shown after the hero. */
+  overview?: { title: string; paragraphs: string[] };
+  /** Overrides the default "Features" section heading. */
+  featuresHeading?: { eyebrow: string; title: string };
+  /** Capabilities. Only what the product is confirmed to do. */
   features: ProductFeature[];
+  /** Overrides the default "The problems it addresses" heading. */
+  benefitsHeading?: { eyebrow: string; title: string; description: string };
   benefits: ProductBenefit[];
   audience: ProductAudience[];
   faqs: ProductFaq[];
@@ -88,69 +101,162 @@ export const products: Product[] = [
   {
     slug: "campus-call",
     name: "Campus Call",
-    category: "School Communication and Engagement",
+    category: "Integrated Campus Operations Platform",
     industry: "Education",
-    valueProp: "Keep your whole school community informed and connected.",
+    valueProp: "Run every part of your campus from one connected platform.",
     description:
-      "Connect schools, parents, and communities with a simple, all-in-one communication platform.",
+      "Centralize the daily operations of educational institutions, from administration and IT to facilities, procurement, inventory and security, in one integrated platform.",
     icon: GraduationCap,
     image: campusCallImage,
     imageAlt: "Students at their desks watching a teacher present in a bright classroom",
+    overview: {
+      title: "From fragmented tools to one connected campus",
+      paragraphs: [
+        "Campus Call is an integrated campus operations and administration platform designed to centralize the daily operations of educational institutions within a single, unified system. It replaces fragmented spreadsheets, email chains, paper forms and disconnected departmental tools with a shared digital environment, providing centralized access, standardized workflows, improved collaboration and greater operational visibility.",
+        "Built with a modular architecture, Campus Call brings together administrative, academic, IT, facilities, procurement, inventory and security operations. Its flexible design allows institutions to manage multiple campuses, buildings, departments and operational teams while maintaining consistent processes and centralized records.",
+      ],
+    },
+    featuresHeading: {
+      eyebrow: "Core modules and capabilities",
+      title: "One platform, built from integrated modules",
+    },
     features: [
       {
-        icon: MessagesSquare,
-        title: "School–family communication",
-        body: "One place for schools to communicate clearly with parents and families.",
+        icon: Fingerprint,
+        title: "Attendance & Workforce Management",
+        body: "Integrates with access-control devices to process attendance records, calculate lateness and working hours, support fixed schedules and rotating shifts, and coordinate leave and vacation calendars.",
       },
       {
-        icon: Megaphone,
-        title: "Announcements",
-        body: "Share school news and important updates with the people who need them.",
+        icon: School,
+        title: "School Administration",
+        body: "Manages campuses, buildings, academic years, grades, classes, student admissions, bulk data imports, credential generation and directory integration.",
       },
       {
-        icon: Workflow,
-        title: "Coordination",
-        body: "Help administrators and teachers stay aligned on day-to-day school activities.",
+        icon: FileSignature,
+        title: "Documents & Acknowledgements",
+        body: "Distributes circulars, forms and official communications while tracking document access, acknowledgements and signatures through verifiable links.",
       },
       {
-        icon: HeartHandshake,
-        title: "Community engagement",
-        body: "Make it easier for parents and the wider community to stay involved in school life.",
+        icon: Headset,
+        title: "IT Service Management",
+        body: "A structured help desk with categorized service requests, multi-level approvals, SLA tracking, CCTV retrieval requests and requester feedback.",
+      },
+      {
+        icon: Network,
+        title: "IT Infrastructure Administration",
+        body: "Organizes network infrastructure, printers and IT assets through a detailed physical hierarchy, with topology visualization, device and port checks, audit logs and online-user monitoring.",
+      },
+      {
+        icon: Tags,
+        title: "Asset Management",
+        body: "Tracks IT and non-IT assets, including identification, tagging, assignment and lifecycle-related records.",
+      },
+      {
+        icon: ShoppingCart,
+        title: "Procurement & Expense Management",
+        body: "Digitizes purchase requests, approval workflows, RFQs, vendor management, purchase orders and invoices. Price Intelligence tracks historical prices and flags potentially suspicious increases.",
+      },
+      {
+        icon: Warehouse,
+        title: "Inventory & Store Management",
+        body: "Manages warehouses, stock levels, material requests and approvals, with a dedicated stationery request portal.",
+      },
+      {
+        icon: Wrench,
+        title: "Campus Services & Facilities Maintenance",
+        body: "Coordinates service personnel, maintenance requests, work orders, cleaning, repairs, planned maintenance, reporting and configurable email notifications.",
+      },
+      {
+        icon: ShieldAlert,
+        title: "IT Cybersecurity Management",
+        body: "Centralizes cybersecurity incidents, device records, vulnerability tracking and security policies.",
+      },
+      {
+        icon: Smartphone,
+        title: "Mobile Workforce Application",
+        body: "Lets facilities and campus service workers receive, accept and complete assigned jobs with notes and photos, in English, Arabic (right-to-left) and French, with job notifications and on-demand job-description translation. Supervisors manage assignments from the desktop platform.",
       },
     ],
+    benefitsHeading: {
+      eyebrow: "Key benefits",
+      title: "A connected, transparent and efficient campus",
+      description:
+        "Campus Call helps educational institutions manage their people, services, infrastructure, resources and workflows through one integrated platform.",
+    },
     benefits: [
       {
-        problem: "Communication spread across too many channels",
+        problem: "Centralized operations",
+        solution: "Brings multiple departments and workflows together in one platform.",
+      },
+      {
+        problem: "Standardized processes",
+        solution: "Reduces manual work through structured requests, approvals and automated workflows.",
+      },
+      {
+        problem: "Improved accountability",
         solution:
-          "Bring school communication into one simple, all-in-one platform instead of scattered tools and threads.",
+          "Maintains traceable records of activities, decisions, assignments and acknowledgements.",
       },
       {
-        problem: "Families missing important updates",
-        solution: "Give parents a clear, consistent place to find school announcements.",
+        problem: "Operational visibility",
+        solution:
+          "Gives administrators and supervisors a clearer view of requests, resources, assets and ongoing work.",
       },
       {
-        problem: "A school community that feels disconnected",
-        solution: "Help schools, parents and communities stay engaged with one another.",
+        problem: "Better resource management",
+        solution:
+          "Supports informed decisions through inventory records, asset tracking and historical procurement data.",
+      },
+      {
+        problem: "Multilingual accessibility",
+        solution: "Supports diverse workforces through English, Arabic and French interfaces where applicable.",
+      },
+      {
+        problem: "Scalable deployment",
+        solution:
+          "Supports institutions with one or multiple campuses and adapts to different organizational structures and operational requirements.",
       },
     ],
     audience: [
-      { label: "Schools", body: "Institutions that want one clear channel to their community." },
-      { label: "Administrators", body: "Leaders responsible for school-wide communication." },
-      { label: "Teachers", body: "Staff who keep families informed about classroom life." },
-      { label: "Parent communities", body: "Families who want to stay connected with their school." },
+      {
+        label: "Educational institutions",
+        body: "Schools and education groups operating one or multiple campuses.",
+      },
+      {
+        label: "School administration",
+        body: "Teams managing campuses, academic years, classes, admissions and staff attendance.",
+      },
+      {
+        label: "IT and security teams",
+        body: "Staff running the help desk, network infrastructure, assets and cybersecurity.",
+      },
+      {
+        label: "Facilities, procurement and stores",
+        body: "Teams handling maintenance, campus services, purchasing and inventory.",
+      },
     ],
     faqs: [
       {
-        question: "Who is Campus Call designed for?",
+        question: "What is Campus Call?",
         answer:
-          "Campus Call is designed for schools, including administrators and teachers, and the parent communities they serve.",
+          "Campus Call is an integrated campus operations and administration platform. It brings administrative, academic, IT, facilities, procurement, inventory and security operations into one unified system.",
+      },
+      {
+        question: "Can Campus Call manage more than one campus?",
+        answer:
+          "Yes. Campus Call supports institutions with one or multiple campuses, buildings, departments and operational teams, while keeping processes consistent and records centralized.",
+      },
+      {
+        question: "Which languages does Campus Call support?",
+        answer:
+          "Campus Call supports English, Arabic and French interfaces where applicable. The mobile workforce application supports all three, including a right-to-left layout for Arabic.",
+      },
+      {
+        question: "Does Campus Call work with our access-control devices?",
+        answer:
+          "The Attendance & Workforce Management module integrates with access-control devices to process attendance records. Contact us with your device details and we’ll confirm compatibility.",
       },
       ...sharedFaqs("Campus Call"),
-      {
-        question: "Does Campus Call integrate with our existing school systems?",
-        answer:
-          "We don’t list integrations on this site. Tell us which systems your school uses and we’ll let you know what is currently supported.",
-      },
     ],
     ctaLabel: CTA_LABEL,
     theme: { accent: "#0878F9", strong: "#0067DB", soft: "#EEF5FF", muted: "#B5D5FF" },
