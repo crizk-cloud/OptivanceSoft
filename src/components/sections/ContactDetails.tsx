@@ -1,20 +1,25 @@
 import { Mail, MapPin, Phone } from "lucide-react";
+import { ButtonLink } from "@/components/ui/Button";
 import { site } from "@/lib/site";
 
 /**
  * Renders configured contact channels from `site.contact`. When none are set,
- * shows an honest notice instead of placeholder details.
+ * points to the contact form (or renders nothing with `hideWhenEmpty`).
  */
-export function ContactDetails() {
+export function ContactDetails({ hideWhenEmpty }: { hideWhenEmpty?: boolean }) {
   const { email, phone, location } = site.contact;
 
   if (!email && !phone && !location) {
+    if (hideWhenEmpty) return null;
     return (
       <div className="rounded-2xl border border-line bg-white p-6 shadow-card sm:p-8">
-        <h2 className="text-lg font-semibold text-ink">Contact details coming soon</h2>
+        <h2 className="text-lg font-semibold text-ink">Contact our team</h2>
         <p className="mt-2 leading-relaxed text-muted">
-          Our public contact channels are being finalized and will be listed here shortly.
+          Send us a message through our contact form and tell us which product you’re using.
         </p>
+        <ButtonLink href="/contact" variant="secondary" className="mt-5">
+          Go to the contact form
+        </ButtonLink>
       </div>
     );
   }

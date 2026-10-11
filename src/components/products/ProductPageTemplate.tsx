@@ -10,13 +10,14 @@ import { Eyebrow, Section, SectionHeading } from "@/components/ui/Section";
 import { cn } from "@/lib/cn";
 import { products, themeStyle, type Product } from "@/lib/products";
 
-const CONTACT_HREF = "/contact";
 const ALL_PRODUCTS_HREF = "/#products";
 
 /** Shared layout for every product landing page; content comes from `products.ts`. */
 export function ProductPageTemplate({ product }: { product: Product }) {
   const Icon = product.icon;
   const related = products.filter((p) => p.slug !== product.slug);
+  // Pre-selects this product in the contact form.
+  const contactHref = `/contact?product=${product.slug}`;
 
   return (
     <div style={themeStyle(product)}>
@@ -60,7 +61,7 @@ export function ProductPageTemplate({ product }: { product: Product }) {
                 {product.description}
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href={CONTACT_HREF} size="lg">
+                <ButtonLink href={contactHref} size="lg">
                   {product.ctaLabel}
                   <ArrowRight className="size-4" aria-hidden />
                 </ButtonLink>
@@ -164,7 +165,7 @@ export function ProductPageTemplate({ product }: { product: Product }) {
       <CtaBand
         title={`Interested in ${product.name}?`}
         body={`Request a demo and our team will show you how ${product.name} can support your organization.`}
-        primary={{ label: product.ctaLabel, href: CONTACT_HREF }}
+        primary={{ label: product.ctaLabel, href: contactHref }}
         secondary={{ label: "View All Products", href: ALL_PRODUCTS_HREF }}
       />
 
