@@ -1,18 +1,24 @@
 import { cn } from "@/lib/cn";
 
-/** Brand mark: a rounded tile with an open ring and a rising accent. */
-export function LogoMark({ className }: { className?: string }) {
+/** Brand mark: a hexagonal "O" with a rising blue facet. */
+export function LogoMark({ className, inverse }: { className?: string; inverse?: boolean }) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" className={cn("size-8 shrink-0", className)}>
-      <rect width="32" height="32" rx="8" fill="#071A2F" />
+      <rect
+        width="32"
+        height="32"
+        rx="8"
+        fill={inverse ? "#0B2440" : "#071A2F"}
+        stroke={inverse ? "rgb(255 255 255 / 0.14)" : "none"}
+      />
       <path
-        d="M22.5 11.2A8 8 0 1 0 24 16"
+        d="M16 6.5 24.2 11.25v9.5L16 25.5l-8.2-4.75v-9.5Z"
         fill="none"
         stroke="#FFFFFF"
-        strokeWidth="3"
-        strokeLinecap="round"
+        strokeWidth="2.4"
+        strokeLinejoin="round"
       />
-      <circle cx="23.2" cy="9.6" r="2.6" fill="#0878F9" />
+      <path d="M12.4 19.6 19.6 12.4v7.2Z" fill="#0878F9" />
     </svg>
   );
 }
@@ -20,7 +26,7 @@ export function LogoMark({ className }: { className?: string }) {
 export function Logo({ inverse, className }: { inverse?: boolean; className?: string }) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
-      <LogoMark className={inverse ? "rounded-lg ring-1 ring-white/15" : undefined} />
+      <LogoMark inverse={inverse} />
       <span
         className={cn(
           "text-lg font-semibold tracking-tight",

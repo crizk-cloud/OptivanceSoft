@@ -1,144 +1,104 @@
-import { ArrowRight, Layers, ShieldCheck, Users } from "lucide-react";
-import { ProductSuiteVisual } from "@/components/home/ProductSuiteVisual";
+import { ArrowRight } from "lucide-react";
+import { HeroDevices } from "@/components/home/HeroDevices";
 import { ProductCard } from "@/components/products/ProductCard";
+import { CtaBand } from "@/components/sections/CtaBand";
+import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow, Section, SectionHeading } from "@/components/ui/Section";
+import { benefits, highlights } from "@/lib/content";
 import { products } from "@/lib/products";
-import { site } from "@/lib/site";
-
-const principles = [
-  {
-    icon: Layers,
-    title: "Built for the industry",
-    body: "Each product is designed around the workflows of the sector it serves, rather than adapted from a generic tool.",
-  },
-  {
-    icon: Users,
-    title: "Made for the people using it",
-    body: "Clear interfaces for staff, families, managers and teams, so the software supports their work instead of adding to it.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Dependable by design",
-    body: "We treat reliability, data care and long-term maintainability as part of the product, not an afterthought.",
-  },
-];
 
 export default function HomePage() {
-  const { email, phone, location } = site.contact;
-  const hasContact = Boolean(email || phone || location);
-
   return (
     <>
-      <section aria-labelledby="hero-title" className="relative overflow-hidden bg-surface">
-        <div className="absolute inset-x-0 top-0 h-px bg-line" />
-        <Container className="grid items-center gap-14 py-20 sm:py-24 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:py-32">
+      <section aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-surface">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(rgb(16_37_66/0.045)_1px,transparent_1px),linear-gradient(90deg,rgb(16_37_66/0.045)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_at_70%_40%,black,transparent_70%)]"
+        />
+        <Container className="grid items-center gap-14 py-16 sm:py-20 lg:grid-cols-[1fr_1.05fr] lg:gap-12 lg:py-28">
           <div>
-            <Eyebrow>{site.name}</Eyebrow>
+            <Eyebrow>Software that brings out your best.</Eyebrow>
             <h1
               id="hero-title"
-              className="mt-4 text-4xl font-semibold tracking-tight text-balance text-navy-950 sm:text-5xl lg:text-6xl"
+              className="mt-4 text-4xl font-semibold tracking-tight text-balance text-navy-950 sm:text-5xl xl:text-6xl"
             >
-              Software that brings out your best.
+              Powering Smarter Operations Across{" "}
+              <span className="text-brand-500">Every Industry</span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted sm:text-xl">
-              We build focused products for schools, athletic programs, agriculture and real
-              estate — each designed to help the people in that industry do their best work.
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted">
+              OptivanceSoft develops powerful, easy-to-use software that helps schools, sports
+              programs, farms, and property businesses work smarter, communicate better, and
+              achieve more.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/#products" size="lg">
-                Explore our products
+                Explore Our Products
                 <ArrowRight className="size-4" aria-hidden />
               </ButtonLink>
-              <ButtonLink href="/#contact" size="lg" variant="secondary">
-                Talk to us
+              <ButtonLink href="/about" size="lg" variant="secondary">
+                About Our Company
               </ButtonLink>
             </div>
           </div>
-          <ProductSuiteVisual />
+          <HeroDevices />
         </Container>
       </section>
 
-      <Section id="products" aria-labelledby="products-title" className="scroll-mt-16">
+      <Section id="products" aria-labelledby="products-title">
         <SectionHeading
           id="products-title"
-          eyebrow="Products"
-          title="Four products, each built for its industry"
-          description="From the classroom to the field to the property portfolio, every OptivanceSoft product focuses on one domain and does it well."
+          eyebrow="Our Products"
+          title="Purpose-Built Software for Real-World Results"
+          description="Four powerful solutions. Different industries. One shared vision — helping you achieve more with technology."
+          align="center"
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <ul className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {products.map((product) => (
-            <ProductCard key={product.slug} product={product} />
-          ))}
-        </div>
-      </Section>
-
-      <Section id="approach" tone="surface" aria-labelledby="approach-title">
-        <SectionHeading
-          id="approach-title"
-          eyebrow="Our approach"
-          title="Focused software, built to be relied on"
-          description="Our philosophy is simple: software should bring out the best in the people and organisations that use it."
-        />
-        <ul className="mt-12 grid gap-6 md:grid-cols-3">
-          {principles.map(({ icon: Icon, title, body }) => (
-            <li key={title} className="rounded-2xl border border-line bg-white p-6 shadow-card sm:p-7">
-              <span className="inline-flex size-11 items-center justify-center rounded-xl bg-navy-950 text-white">
-                <Icon className="size-5" aria-hidden strokeWidth={1.75} />
-              </span>
-              <h3 className="mt-6 text-lg font-semibold text-ink">{title}</h3>
-              <p className="mt-2 leading-relaxed text-muted">{body}</p>
+            <li key={product.slug}>
+              <ProductCard product={product} />
             </li>
           ))}
         </ul>
       </Section>
 
-      <Section id="contact" tone="navy" aria-labelledby="contact-title">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end">
-          <SectionHeading
-            id="contact-title"
-            inverse
-            eyebrow="Contact"
-            title="Let’s find the right product for your organisation"
-            description="Tell us about your school, farm or property business and we’ll help you see how OptivanceSoft can support it."
-          />
-          {hasContact ? (
-            <dl className="space-y-4 text-muted-dark lg:justify-self-end">
-              {email && (
-                <div>
-                  <dt className="text-sm font-semibold text-white">Email</dt>
-                  <dd>
-                    <a href={`mailto:${email}`} className="hover:text-white">
-                      {email}
-                    </a>
-                  </dd>
-                </div>
-              )}
-              {phone && (
-                <div>
-                  <dt className="text-sm font-semibold text-white">Phone</dt>
-                  <dd>
-                    <a href={`tel:${phone.replace(/\s/g, "")}`} className="hover:text-white">
-                      {phone}
-                    </a>
-                  </dd>
-                </div>
-              )}
-              {location && (
-                <div>
-                  <dt className="text-sm font-semibold text-white">Location</dt>
-                  <dd>{location}</dd>
-                </div>
-              )}
-            </dl>
-          ) : (
-            <p className="text-muted-dark lg:justify-self-end">
-              Contact details will be published here shortly.
-            </p>
-          )}
+      <Section id="why-optivancesoft" tone="surface" aria-labelledby="why-title">
+        <SectionHeading
+          id="why-title"
+          eyebrow="Why OptivanceSoft"
+          title="Built for Real People. Designed for Real Results."
+          description="We focus on the everyday work of the organizations we serve, and build software that makes that work simpler."
+        />
+        <div className="mt-12">
+          <FeatureGrid items={benefits} />
         </div>
       </Section>
+
+      <Section aria-labelledby="overview-title">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+          <div>
+            <Eyebrow>Company Overview</Eyebrow>
+            <h2
+              id="overview-title"
+              className="mt-3 text-3xl font-semibold tracking-tight text-balance text-ink sm:text-4xl"
+            >
+              A Smarter Future, Across More Industries
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-pretty text-muted">
+              From classrooms to playing fields, from farms to properties, OptivanceSoft helps
+              organizations operate more efficiently and achieve their goals.
+            </p>
+            <ButtonLink href="/about" variant="secondary" className="mt-8">
+              Learn about OptivanceSoft
+              <ArrowRight className="size-4" aria-hidden />
+            </ButtonLink>
+          </div>
+          <FeatureGrid items={highlights} columns={2} variant="plain" />
+        </div>
+      </Section>
+
+      <CtaBand />
     </>
   );
 }

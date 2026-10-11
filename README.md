@@ -18,16 +18,20 @@ npm run build
 
 ```
 src/
-  app/                 Routes, root layout, global styles and design tokens (globals.css)
+  app/                 Routes: home, about, contact, support, privacy, terms,
+                       products/[slug]; root layout; design tokens (globals.css)
   components/
     brand/             Logo and brand mark
-    layout/            Site header, footer
-    ui/                Shared primitives: Button, Container, Section, SectionHeading
-    products/          Product card and icon
-    home/              Homepage-specific pieces
+    layout/            Site header (products menu, mobile menu), footer
+    ui/                Primitives: Button, Container, Section, SectionHeading
+    sections/          Reusable page sections: PageHero, FeatureGrid, CtaBand,
+                       ContactDetails, PolicyPending
+    products/          Product card, icon and per-product CSS visuals
+    home/              Hero device illustration
   lib/
     products.ts        Single source of truth for product content
-    site.ts            Company details, navigation and contact info
+    content.ts         Benefits and company highlights
+    site.ts            Company details, contact info, social links, navigation
 ```
 
 ## Design tokens
@@ -44,4 +48,4 @@ Defined in `src/app/globals.css` under `@theme` and available as Tailwind utilit
 | `ink`        | `#102542` | Primary text                                |
 | `muted`      | `#5B6B82` | Secondary text                              |
 
-Contact details live in `src/lib/site.ts` and are hidden until filled in.
+Contact details and social links live in `src/lib/site.ts` and are hidden until filled in.\nPrivacy Policy and Terms of Service pages show a notice until the approved text is added.
