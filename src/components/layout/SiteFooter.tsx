@@ -10,12 +10,12 @@ export function SiteFooter() {
       <Container className="py-14 sm:py-16">
         <div className="grid gap-10 sm:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div className="max-w-sm sm:col-span-3 lg:col-span-1">
-            <Link href="/" aria-label="OptivanceSoft home" className="inline-block rounded-lg">
-              <Logo inverse />
+            <Link href="/" className="inline-block rounded-lg">
+              <Logo inverse tagline />
             </Link>
             <p className="mt-4 text-sm leading-relaxed">
               {site.name} builds practical software for schools, sports programs, farms and
-              property businesses. {site.tagline}
+              property businesses.
             </p>
             {site.social.length > 0 && (
               <ul className="mt-5 flex gap-4 text-sm">

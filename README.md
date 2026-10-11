@@ -74,6 +74,20 @@ src/
     og/                Branded Open Graph image template
 ```
 
+## Brand assets
+
+| File | Use |
+| ---- | --- |
+| `docs/brand/optivancesoft-logo-sheet.webp` | Official logo sheet as supplied (source of truth) |
+| `public/brand/optivancesoft-mark.png` | Logo mark cut from the sheet with a transparent background; used by `Logo`, social images and structured data |
+| `src/app/favicon.ico`, `src/app/icon.png`, `src/app/apple-icon.png` | Browser and home-screen icons generated from the mark |
+| `src/lib/og/fonts/` | Montserrat (SIL Open Font License, `OFL.txt`) for social images |
+
+The wordmark is live text: "OPTIVANCE" + "SOFT" in Montserrat ExtraBold (`font-display`),
+with the slogan "Software that brings out your best." in spaced capitals beneath it
+(`<Logo tagline />`). If a vector (SVG) master of the mark becomes available, replace
+`optivancesoft-mark.png` and regenerate the icons from it for the sharpest results.
+
 ## Design tokens
 
 Defined in `src/app/globals.css` under `@theme` and available as Tailwind utilities

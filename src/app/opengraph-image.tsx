@@ -7,7 +7,7 @@ export const contentType = "image/png";
 
 export default function Image() {
   return brandImage({
-    eyebrow: site.tagline,
+    eyebrow: "Education · Athletics · Agriculture · Real estate",
     title: "Powering Smarter Operations Across Every Industry",
     subtitle: "Software for schools, sports programs, farms and property businesses.",
   });

@@ -139,7 +139,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-950">
       <Container className="flex h-16 items-center justify-between gap-6">
         <Link href="/" aria-label="OptivanceSoft home" onClick={close} className="rounded-lg">
-          <Logo inverse />
+          <Logo inverse priority />
         </Link>
 
         <nav aria-label="Main" className="hidden lg:block">

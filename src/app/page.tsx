@@ -33,7 +33,7 @@ function OrganizationJsonLd() {
         "@id": `${url}/#organization`,
         name: site.name,
         url,
-        logo: `${url}/icon.svg`,
+        logo: `${url}/brand/optivancesoft-mark.png`,
         description: site.positioning,
       },
       {
