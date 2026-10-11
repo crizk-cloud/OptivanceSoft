@@ -87,6 +87,7 @@ Official vector artwork lives in `docs/brand/vector/` (source of truth):
 | `src/app/icon.svg`, `src/app/favicon.ico` | Browser icons generated from the mark |
 | `src/app/apple-icon.png` | Home-screen icon generated from the dark app icon |
 | `src/assets/hero-devices.jpg` | Homepage hero photo |
+| `src/assets/products/logos/*.png` | Product logos (transparent, for light backgrounds), shown as the title on product pages via `logo` in `products.ts` |
 | `src/assets/products/*.jpg` | Industry photos for the product cards (resized and served as WebP/AVIF by `next/image`) |
 | `src/lib/og/fonts/` | Montserrat (SIL Open Font License, `OFL.txt`) for social image text |
 

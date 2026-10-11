@@ -45,6 +45,8 @@ import {
 import athletixImage from "@/assets/products/athletix-school.jpg";
 import campusCallImage from "@/assets/products/campus-call.jpg";
 import growManagerImage from "@/assets/products/grow-manager.jpg";
+import athletixLogo from "@/assets/products/logos/athletix-school.png";
+import campusCallLogo from "@/assets/products/logos/campus-call.png";
 import serviceHubImage from "@/assets/products/service-hub.jpg";
 import type { ProductSlug } from "./productSlugs";
 
@@ -76,6 +78,8 @@ export type Product = {
   /** Industry photo used on product cards. */
   image: StaticImageData;
   imageAlt: string;
+  /** Product logo (for light backgrounds), shown in place of the name on its page. */
+  logo?: StaticImageData;
   /** Optional longer introduction shown after the hero. */
   overview?: { title: string; paragraphs: string[] };
   /** Overrides the default "Features" section heading. */
@@ -122,6 +126,7 @@ export const products: Product[] = [
       "Centralize the daily operations of educational institutions, from administration and IT to facilities, procurement, inventory and security, in one integrated platform.",
     icon: GraduationCap,
     image: campusCallImage,
+    logo: campusCallLogo,
     imageAlt: "Students at their desks watching a teacher present in a bright classroom",
     overview: {
       title: "From fragmented tools to one connected campus",
@@ -285,6 +290,7 @@ export const products: Product[] = [
       "Organize, manage and develop your school’s entire sports programme in one centralized system, from teams and training to health readiness and equipment.",
     icon: Trophy,
     image: athletixImage,
+    logo: athletixLogo,
     imageAlt: "Sprinters set in their starting blocks on a red running track",
     overview: {
       title: "One home for your entire sports programme",

@@ -1,4 +1,5 @@
 import { ArrowRight, Check, UserRound } from "lucide-react";
+import Image from "next/image";
 import { ProductCard } from "@/components/products/ProductCard";
 import { ProductDashboard } from "@/components/products/ProductDashboard";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -43,20 +44,46 @@ export function ProductPageTemplate({ product }: { product: Product }) {
           />
           <div className="mt-10 grid items-center gap-14 lg:mt-14 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
             <div>
-              <div className="flex items-center gap-3">
-                <span className="inline-flex size-10 items-center justify-center rounded-xl bg-(--accent-strong) text-white">
-                  <Icon className="size-5" aria-hidden strokeWidth={1.75} />
-                </span>
-                <p className="text-sm font-semibold tracking-wide text-(--accent-strong) uppercase">
-                  {product.category}
-                </p>
-              </div>
-              <h1
-                id="product-title"
-                className="mt-6 text-4xl font-semibold tracking-tight text-navy-950 sm:text-5xl"
-              >
-                {product.name}
-              </h1>
+              {product.logo ? (
+                <>
+                  {/* The logo is the page title; its alt text gives the heading its name. */}
+                  <h1 id="product-title">
+                    <Image
+                      src={product.logo}
+                      alt={product.name}
+                      loading="eager"
+                      sizes="(min-width: 640px) 360px, 280px"
+                      className={cn(
+                        "h-auto w-auto",
+                        // Tall (badge-style) logos get more height than wide wordmarks.
+                        product.logo.height / product.logo.width > 0.6
+                          ? "max-h-44 sm:max-h-56"
+                          : "max-h-32 max-w-[17.5rem] sm:max-h-40 sm:max-w-[22.5rem]",
+                      )}
+                    />
+                  </h1>
+                  <p className="mt-6 text-sm font-semibold tracking-wide text-(--accent-strong) uppercase">
+                    {product.category}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex size-10 items-center justify-center rounded-xl bg-(--accent-strong) text-white">
+                      <Icon className="size-5" aria-hidden strokeWidth={1.75} />
+                    </span>
+                    <p className="text-sm font-semibold tracking-wide text-(--accent-strong) uppercase">
+                      {product.category}
+                    </p>
+                  </div>
+                  <h1
+                    id="product-title"
+                    className="mt-6 text-4xl font-semibold tracking-tight text-navy-950 sm:text-5xl"
+                  >
+                    {product.name}
+                  </h1>
+                </>
+              )}
               <p className="mt-4 text-2xl font-medium tracking-tight text-balance text-ink sm:text-[1.65rem] sm:leading-snug">
                 {product.valueProp}
               </p>
