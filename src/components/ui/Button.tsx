@@ -6,10 +6,10 @@ type Variant = "primary" | "secondary" | "ghost" | "inverse";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-lg font-semibold whitespace-nowrap transition-colors duration-150 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-lg font-semibold whitespace-nowrap transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-out focus-visible:outline-offset-2 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-55 disabled:active:translate-y-0 aria-disabled:cursor-not-allowed";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-brand-600 text-white shadow-sm hover:bg-brand-700",
+  primary: "bg-brand-600 text-white shadow-sm hover:bg-brand-700 hover:shadow-md active:bg-brand-700",
   secondary:
     "border border-line-strong bg-white text-ink shadow-sm hover:border-brand-200 hover:bg-brand-50",
   ghost: "text-ink hover:bg-surface",
@@ -23,7 +23,7 @@ const sizes: Record<Size, string> = {
 
 type StyleProps = { variant?: Variant; size?: Size };
 
-export function buttonClasses({ variant = "primary", size = "md" }: StyleProps = {}) {
+function buttonClasses({ variant = "primary", size = "md" }: StyleProps = {}) {
   return cn(base, variants[variant], sizes[size]);
 }
 

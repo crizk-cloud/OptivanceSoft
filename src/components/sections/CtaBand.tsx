@@ -9,14 +9,17 @@ export function CtaBand({
   body = "Explore our products or get in touch with our team to learn how OptivanceSoft can help you achieve more.",
   primary = { label: "Explore Our Products", href: "/#products" },
   secondary = { label: "Contact Us", href: "/contact" },
+  flush,
 }: {
   title?: string;
   body?: string;
   primary?: Action;
   secondary?: Action;
+  /** Drop top padding when the previous section is also white. */
+  flush?: boolean;
 }) {
   return (
-    <section aria-labelledby="cta-title" className="bg-white py-20 sm:py-24">
+    <section aria-labelledby="cta-title" className={flush ? "bg-white pb-16 sm:pb-20 lg:pb-24" : "bg-white py-16 sm:py-20 lg:py-24"}>
       <Container>
         <div className="relative isolate overflow-hidden rounded-3xl bg-navy-950 px-6 py-14 sm:px-12 sm:py-16 lg:px-16">
           {/* Subtle abstract texture: fine grid plus a soft brand glow and arcs. */}

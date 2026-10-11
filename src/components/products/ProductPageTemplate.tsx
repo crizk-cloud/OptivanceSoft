@@ -78,6 +78,7 @@ export function ProductPageTemplate({ product }: { product: Product }) {
       {/* Features */}
       <Section aria-labelledby="features-title">
         <SectionHeading
+          accent
           id="features-title"
           eyebrow="Features"
           title={`What ${product.name} helps you do`}
@@ -85,7 +86,7 @@ export function ProductPageTemplate({ product }: { product: Product }) {
         <ul
           className={cn(
             "mt-12 grid gap-6 sm:grid-cols-2",
-            product.features.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3",
+            product.features.length === 4 ? "xl:grid-cols-4" : "lg:grid-cols-3",
           )}
         >
           {product.features.map(({ icon: FeatureIcon, title, body }) => (
@@ -104,6 +105,7 @@ export function ProductPageTemplate({ product }: { product: Product }) {
       <Section tone="surface" aria-labelledby="benefits-title">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
           <SectionHeading
+          accent
             id="benefits-title"
             eyebrow="Why it matters"
             title="The problems it addresses"
@@ -127,7 +129,7 @@ export function ProductPageTemplate({ product }: { product: Product }) {
 
       {/* Audience */}
       <Section aria-labelledby="audience-title">
-        <SectionHeading id="audience-title" eyebrow="Who it’s for" title="Designed for" />
+        <SectionHeading accent id="audience-title" eyebrow="Who it’s for" title="Designed for" />
         <ul
           className={cn(
             "mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-2",
@@ -150,7 +152,7 @@ export function ProductPageTemplate({ product }: { product: Product }) {
       <Section tone="surface" aria-labelledby="faq-title">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
           <div>
-            <Eyebrow>FAQ</Eyebrow>
+            <Eyebrow accent>FAQ</Eyebrow>
             <h2 id="faq-title" className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
               Common questions
             </h2>

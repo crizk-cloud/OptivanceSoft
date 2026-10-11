@@ -17,18 +17,27 @@ export function Section({
   ...props
 }: { tone?: Tone } & ComponentPropsWithoutRef<"section">) {
   return (
-    <section className={cn("py-20 sm:py-24 lg:py-28", tones[tone], className)} {...props}>
+    <section className={cn("py-16 sm:py-20 lg:py-24", tones[tone], className)} {...props}>
       <Container>{children}</Container>
     </section>
   );
 }
 
-export function Eyebrow({ children, inverse }: { children: ReactNode; inverse?: boolean }) {
+/** `accent` uses the surrounding product theme (`--accent-strong`). */
+export function Eyebrow({
+  children,
+  inverse,
+  accent,
+}: {
+  children: ReactNode;
+  inverse?: boolean;
+  accent?: boolean;
+}) {
   return (
     <p
       className={cn(
         "text-sm font-semibold tracking-wide uppercase",
-        inverse ? "text-brand-300" : "text-brand-600",
+        inverse ? "text-brand-300" : accent ? "text-(--accent-strong)" : "text-brand-600",
       )}
     >
       {children}
@@ -43,6 +52,7 @@ export function SectionHeading({
   description,
   align = "left",
   inverse,
+  accent,
 }: {
   id?: string;
   eyebrow?: string;
@@ -50,10 +60,15 @@ export function SectionHeading({
   description?: ReactNode;
   align?: "left" | "center";
   inverse?: boolean;
+  accent?: boolean;
 }) {
   return (
     <div className={cn("max-w-2xl", align === "center" && "mx-auto text-center")}>
-      {eyebrow && <Eyebrow inverse={inverse}>{eyebrow}</Eyebrow>}
+      {eyebrow && (
+        <Eyebrow inverse={inverse} accent={accent}>
+          {eyebrow}
+        </Eyebrow>
+      )}
       <h2
         id={id}
         className={cn(

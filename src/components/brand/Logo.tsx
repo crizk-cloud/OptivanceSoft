@@ -1,24 +1,31 @@
 import { cn } from "@/lib/cn";
 
-/** Brand mark: a hexagonal "O" with a rising blue facet. */
+/**
+ * Brand mark: a hexagonal "O" whose upper-right edge is picked out in brand
+ * blue, suggesting forward movement. Paths mirror `src/app/icon.svg`.
+ */
 export function LogoMark({ className, inverse }: { className?: string; inverse?: boolean }) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" className={cn("size-8 shrink-0", className)}>
       <rect
-        width="32"
-        height="32"
+        x="0.5"
+        y="0.5"
+        width="31"
+        height="31"
         rx="8"
         fill={inverse ? "#0B2440" : "#071A2F"}
         stroke={inverse ? "rgb(255 255 255 / 0.14)" : "none"}
       />
       <path
-        d="M16 6.5 24.2 11.25v9.5L16 25.5l-8.2-4.75v-9.5Z"
+        d="M24.2 13.2v7.55L16 25.5l-8.2-4.75v-9.5L16 6.5"
         fill="none"
         stroke="#FFFFFF"
-        strokeWidth="2.4"
+        strokeWidth="2.6"
+        strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <path d="M12.4 19.6 19.6 12.4v7.2Z" fill="#0878F9" />
+      <path d="M16 6.5l8.2 4.75" fill="none" stroke="#0878F9" strokeWidth="3" strokeLinecap="round" />
+      <circle cx="16" cy="16" r="2.4" fill="#0878F9" />
     </svg>
   );
 }
@@ -29,7 +36,7 @@ export function Logo({ inverse, className }: { inverse?: boolean; className?: st
       <LogoMark inverse={inverse} />
       <span
         className={cn(
-          "text-lg font-semibold tracking-tight",
+          "text-[1.0625rem] font-semibold tracking-[-0.015em] sm:text-lg",
           inverse ? "text-white" : "text-navy-950",
         )}
       >

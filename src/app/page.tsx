@@ -98,7 +98,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <CtaBand />
+      <CtaBand flush />
     </>
   );
 }

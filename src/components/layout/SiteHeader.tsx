@@ -2,6 +2,7 @@
 
 import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { Logo } from "@/components/brand/Logo";
 import { ButtonLink } from "@/components/ui/Button";
@@ -11,7 +12,7 @@ import { productHref, products, themeStyle } from "@/lib/products";
 import { mainNav } from "@/lib/site";
 
 const linkClass =
-  "rounded-md px-3 py-2 text-sm font-medium text-muted-dark transition-colors hover:text-white";
+  "rounded-md px-3 py-2 text-sm font-medium text-muted-dark transition-colors duration-150 hover:text-white aria-[current=page]:text-white";
 
 function ProductsMenu() {
   const [open, setOpen] = useState(false);
@@ -108,12 +109,27 @@ function ProductsMenu() {
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const menuId = useId();
+  const pathname = usePathname();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const current = (href: string) => (href === pathname ? ("page" as const) : undefined);
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    // Close the mobile menu if the viewport grows to the desktop layout.
+    const desktop = window.matchMedia("(min-width: 64rem)");
+    const onResize = () => desktop.matches && setOpen(false);
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    desktop.addEventListener("change", onResize);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      desktop.removeEventListener("change", onResize);
+    };
   }, [open]);
 
   const close = () => setOpen(false);
@@ -129,7 +145,7 @@ export function SiteHeader() {
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-1">
             <li>
-              <Link href={home.href} className={linkClass}>
+              <Link href={home.href} aria-current={current(home.href)} className={linkClass}>
                 {home.label}
               </Link>
             </li>
@@ -138,7 +154,7 @@ export function SiteHeader() {
             </li>
             {rest.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className={linkClass}>
+                <Link href={item.href} aria-current={current(item.href)} className={linkClass}>
                   {item.label}
                 </Link>
               </li>
@@ -151,8 +167,9 @@ export function SiteHeader() {
         </div>
 
         <button
+          ref={menuButtonRef}
           type="button"
-          className="-mr-2 inline-flex size-10 items-center justify-center rounded-lg text-white hover:bg-white/10 lg:hidden"
+          className="-mr-2 inline-flex size-11 items-center justify-center rounded-lg text-white hover:bg-white/10 lg:hidden"
           aria-expanded={open}
           aria-controls={menuId}
           onClick={() => setOpen((v) => !v)}

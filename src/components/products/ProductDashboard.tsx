@@ -17,7 +17,7 @@ export function ProductDashboard({ product }: { product: Product }) {
             <span className="size-2.5 rounded-full bg-line-strong" />
             <span className="size-2.5 rounded-full bg-line-strong" />
           </div>
-          <div className="grid grid-cols-[minmax(0,12.5rem)_1fr] max-sm:grid-cols-1">
+          <div className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] max-sm:grid-cols-1">
             <div className="border-r border-line bg-navy-950 p-4 max-sm:hidden">
               <div className="flex items-center gap-2 text-sm font-semibold text-white">
                 <span className="inline-flex size-6 items-center justify-center rounded-md bg-(--accent)">
@@ -43,8 +43,8 @@ export function ProductDashboard({ product }: { product: Product }) {
 
             <div className="space-y-4 p-5">
               <div className="flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-sm font-semibold text-ink">{product.features[0].title}</p>
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-semibold text-ink">{product.features[0].title}</p>
                   <span className="mt-1.5 block h-1.5 w-28 rounded-full bg-line" />
                 </div>
                 <span className="h-7 w-20 shrink-0 rounded-md bg-(--accent-strong)" />

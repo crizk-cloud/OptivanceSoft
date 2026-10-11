@@ -91,7 +91,7 @@ const visuals: Record<ProductSlug, React.ReactNode> = {
     </div>
   ),
   "service-hub": (
-    <div className="w-full max-w-[230px] space-y-1.5">
+    <div className="w-full max-w-[220px] space-y-1">
       {[
         ["bg-(--accent)", "w-3/4"],
         ["bg-(--accent-muted)", "w-1/2"],
@@ -99,12 +99,12 @@ const visuals: Record<ProductSlug, React.ReactNode> = {
       ].map(([dot, width], i) => (
         <div
           key={i}
-          className="flex items-center gap-2.5 rounded-lg border border-line bg-white p-2 shadow-card"
+          className="flex items-center gap-2.5 rounded-lg border border-line bg-white p-1.5 shadow-card"
         >
-          <span className="flex size-7 shrink-0 items-end justify-center gap-0.5 rounded-md bg-navy-950 p-1">
+          <span className="flex size-6 shrink-0 items-end justify-center gap-0.5 rounded-md bg-navy-950 p-1">
+            <span className="h-2 w-1 rounded-[1px] bg-white/70" />
+            <span className="h-3.5 w-1 rounded-[1px] bg-white" />
             <span className="h-2.5 w-1 rounded-[1px] bg-white/70" />
-            <span className="h-4 w-1 rounded-[1px] bg-white" />
-            <span className="h-3 w-1 rounded-[1px] bg-white/70" />
           </span>
           <span className="flex-1 space-y-1">
             <span className={cn(line, width, "bg-ink/60")} />

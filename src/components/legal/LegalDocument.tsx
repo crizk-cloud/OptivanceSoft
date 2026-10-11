@@ -50,7 +50,7 @@ export function LegalDocument({
           <ol className="mt-3 grid list-decimal gap-x-8 gap-y-1.5 pl-5 text-sm sm:grid-cols-2">
             {sections.map((s, i) => (
               <li key={s.heading}>
-                <a href={`#section-${i + 1}`} className="text-brand-600 hover:underline">
+                <a href={`#section-${i + 1}`} className="inline-block py-0.5 text-brand-600 hover:underline">
                   {s.heading}
                 </a>
               </li>

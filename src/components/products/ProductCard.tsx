@@ -25,9 +25,9 @@ export function ProductCard({ product }: { product: Product }) {
     <article
       aria-labelledby={titleId}
       style={themeStyle(product)}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition-[border-color,box-shadow] duration-200 hover:border-(--accent-muted) hover:shadow-raised"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-(--accent-muted) hover:shadow-raised motion-safe:hover:-translate-y-0.5"
     >
-      <ProductVisual slug={product.slug} className="h-40 border-b border-line" />
+      <ProductVisual slug={product.slug} className="aspect-[16/9] border-b border-line" />
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-center gap-3">
           <ProductIcon product={product} size="sm" />

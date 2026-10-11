@@ -114,6 +114,7 @@ export default function AboutPage() {
       </Section>
 
       <CtaBand
+        flush
         title="See how OptivanceSoft can help your organization"
         body="Explore our products or get in touch with our team to talk about your needs."
       />

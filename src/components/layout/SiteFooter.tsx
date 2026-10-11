@@ -8,8 +8,8 @@ export function SiteFooter() {
   return (
     <footer className="bg-navy-950 text-muted-dark">
       <Container className="py-14 sm:py-16">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
-          <div className="max-w-sm sm:col-span-2 lg:col-span-1">
+        <div className="grid gap-10 sm:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+          <div className="max-w-sm sm:col-span-3 lg:col-span-1">
             <Link href="/" aria-label="OptivanceSoft home" className="inline-block rounded-lg">
               <Logo inverse />
             </Link>
@@ -37,10 +37,10 @@ export function SiteFooter() {
                 <h2 id={headingId} className="text-sm font-semibold text-white">
                   {group.title}
                 </h2>
-                <ul className="mt-4 space-y-3 text-sm">
+                <ul className="mt-3 space-y-1 text-sm">
                   {group.links.map((link) => (
                     <li key={link.href}>
-                      <Link href={link.href} className="transition-colors hover:text-white">
+                      <Link href={link.href} className="inline-block py-1.5 transition-colors hover:text-white">
                         {link.label}
                       </Link>
                     </li>
