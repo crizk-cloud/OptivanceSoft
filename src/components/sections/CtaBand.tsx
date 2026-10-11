@@ -2,12 +2,18 @@ import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
+type Action = { label: string; href: string };
+
 export function CtaBand({
   title = "Ready to Find the Right Solution for Your Organization?",
   body = "Explore our products or get in touch with our team to learn how OptivanceSoft can help you achieve more.",
+  primary = { label: "Explore Our Products", href: "/#products" },
+  secondary = { label: "Contact Us", href: "/contact" },
 }: {
   title?: string;
   body?: string;
+  primary?: Action;
+  secondary?: Action;
 }) {
   return (
     <section aria-labelledby="cta-title" className="bg-white py-20 sm:py-24">
@@ -43,12 +49,12 @@ export function CtaBand({
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-pretty text-muted-dark">{body}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/#products" size="lg">
-                Explore Our Products
+              <ButtonLink href={primary.href} size="lg">
+                {primary.label}
                 <ArrowRight className="size-4" aria-hidden />
               </ButtonLink>
-              <ButtonLink href="/contact" size="lg" variant="inverse">
-                Contact Us
+              <ButtonLink href={secondary.href} size="lg" variant="inverse">
+                {secondary.label}
               </ButtonLink>
             </div>
           </div>

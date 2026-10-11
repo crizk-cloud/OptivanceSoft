@@ -26,10 +26,12 @@ src/
     ui/                Primitives: Button, Container, Section, SectionHeading
     sections/          Reusable page sections: PageHero, FeatureGrid, CtaBand,
                        ContactDetails, PolicyPending
-    products/          Product card, icon and per-product CSS visuals
+    products/          Product card, icon, CSS visuals, dashboard preview and
+                       the shared ProductPageTemplate
     home/              Hero device illustration
   lib/
-    products.ts        Single source of truth for product content
+    products.ts        Typed product definitions: copy, features, benefits,
+                       audience, FAQs, CTA label and colour theme
     content.ts         Benefits and company highlights
     site.ts            Company details, contact info, social links, navigation
 ```

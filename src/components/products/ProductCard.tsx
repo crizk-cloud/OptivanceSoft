@@ -1,16 +1,17 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { productHref, type Product } from "@/lib/products";
+import { productHref, themeStyle, type Product } from "@/lib/products";
 import { ProductVisual } from "./ProductVisual";
 
 export function ProductIcon({ product, size = "md" }: { product: Product; size?: "sm" | "md" }) {
   const Icon = product.icon;
   return (
     <span
+      style={themeStyle(product)}
       className={
         size === "sm"
-          ? "inline-flex size-8 items-center justify-center rounded-lg bg-brand-50 text-brand-500 ring-1 ring-brand-100"
-          : "inline-flex size-11 items-center justify-center rounded-xl bg-brand-50 text-brand-500 ring-1 ring-brand-100"
+          ? "inline-flex size-8 items-center justify-center rounded-lg bg-(--accent-soft) text-(--accent-strong) ring-1 ring-(--accent-muted)"
+          : "inline-flex size-11 items-center justify-center rounded-xl bg-(--accent-soft) text-(--accent-strong) ring-1 ring-(--accent-muted)"
       }
     >
       <Icon className={size === "sm" ? "size-4" : "size-5"} aria-hidden strokeWidth={1.75} />
@@ -23,7 +24,8 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <article
       aria-labelledby={titleId}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-raised"
+      style={themeStyle(product)}
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition-[border-color,box-shadow] duration-200 hover:border-(--accent-muted) hover:shadow-raised"
     >
       <ProductVisual slug={product.slug} className="h-40 border-b border-line" />
       <div className="flex flex-1 flex-col p-6">
@@ -34,11 +36,11 @@ export function ProductCard({ product }: { product: Product }) {
         <h3 id={titleId} className="mt-4 text-xl font-semibold tracking-tight text-ink">
           {product.name}
         </h3>
-        <p className="mt-1 text-sm font-medium text-brand-600">{product.category}</p>
+        <p className="mt-1 text-sm font-medium text-(--accent-strong)">{product.category}</p>
         <p className="mt-3 flex-1 leading-relaxed text-muted">{product.description}</p>
         <Link
           href={productHref(product.slug)}
-          className="mt-6 inline-flex items-center gap-1.5 self-start rounded-md text-sm font-semibold text-brand-600 after:absolute after:inset-0 hover:text-brand-700"
+          className="mt-6 inline-flex items-center gap-1.5 self-start rounded-md text-sm font-semibold text-(--accent-strong) after:absolute after:inset-0 hover:underline hover:underline-offset-4"
         >
           Learn more<span className="sr-only"> about {product.name}</span>
           <ArrowRight

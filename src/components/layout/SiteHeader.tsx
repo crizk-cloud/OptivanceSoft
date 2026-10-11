@@ -7,7 +7,7 @@ import { Logo } from "@/components/brand/Logo";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/cn";
-import { productHref, products } from "@/lib/products";
+import { productHref, products, themeStyle } from "@/lib/products";
 import { mainNav } from "@/lib/site";
 
 const linkClass =
@@ -76,7 +76,10 @@ function ProductsMenu() {
                   onClick={() => setOpen(false)}
                   className="flex gap-3 rounded-xl p-3 transition-colors hover:bg-surface"
                 >
-                  <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-500 ring-1 ring-brand-100">
+                  <span
+                    style={themeStyle(p)}
+                    className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-(--accent-soft) text-(--accent-strong) ring-1 ring-(--accent-muted)"
+                  >
                     <Icon className="size-4" aria-hidden strokeWidth={1.75} />
                   </span>
                   <span>

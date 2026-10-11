@@ -17,11 +17,11 @@ export default function ContactPage() {
         <div className="max-w-xl">
           <Eyebrow>Contact</Eyebrow>
           <h1 className="mt-4 text-4xl font-semibold tracking-tight text-balance text-navy-950 sm:text-5xl">
-            Let’s talk about your organization
+            Request a demo or talk to our team
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-muted">
             Whether you run a school, a sports program, a farm or a property business, we’d be
-            glad to help you find the OptivanceSoft product that fits.
+            glad to show you the OptivanceSoft product that fits and answer your questions.
           </p>
           <h2 className="mt-10 text-sm font-semibold tracking-wide text-ink uppercase">Our products</h2>
           <ul className="mt-4 space-y-2">
