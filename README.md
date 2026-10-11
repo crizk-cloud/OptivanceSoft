@@ -76,17 +76,23 @@ src/
 
 ## Brand assets
 
+Official vector artwork lives in `docs/brand/vector/` (source of truth):
+`optivancesoft-logo.svg` (for light backgrounds), `optivancesoft-logo-reversed.svg`
+(for dark backgrounds), `optivancesoft-mark.svg`, and the light/dark app icons.
+
 | File | Use |
 | ---- | --- |
-| `docs/brand/optivancesoft-logo-sheet.webp` | Official logo sheet as supplied (source of truth) |
-| `public/brand/optivancesoft-mark.png` | Logo mark cut from the sheet with a transparent background; used by `Logo`, social images and structured data |
-| `src/app/favicon.ico`, `src/app/icon.png`, `src/app/apple-icon.png` | Browser and home-screen icons generated from the mark |
-| `src/lib/og/fonts/` | Montserrat (SIL Open Font License, `OFL.txt`) for social images |
+| `public/brand/optivancesoft-logo-compact(-reversed).svg` | Mark + wordmark without the slogan line (too small to read at header size); used by `<Logo />` |
+| `public/brand/optivancesoft-logo(-reversed).svg`, `optivancesoft-mark.svg` | Unmodified copies for download/reuse; the reversed lockup is used in social images |
+| `public/brand/optivancesoft-mark.png` | 512px render of the mark for structured data |
+| `src/app/icon.svg`, `src/app/favicon.ico` | Browser icons generated from the mark |
+| `src/app/apple-icon.png` | Home-screen icon generated from the dark app icon |
+| `src/lib/og/fonts/` | Montserrat (SIL Open Font License, `OFL.txt`) for social image text |
 
-The wordmark is live text: "OPTIVANCE" + "SOFT" in Montserrat ExtraBold (`font-display`),
-with the slogan "Software that brings out your best." in spaced capitals beneath it
-(`<Logo tagline />`). If a vector (SVG) master of the mark becomes available, replace
-`optivancesoft-mark.png` and regenerate the icons from it for the sharpest results.
+`<Logo tagline />` adds the slogan "Software that brings out your best." as text under
+the wordmark. If the artwork changes, replace the files in `docs/brand/vector/`, then
+regenerate the compact lockups (remove the slogan path and set
+`viewBox="20 5 1356 270"`) and the icons.
 
 ## Design tokens
 

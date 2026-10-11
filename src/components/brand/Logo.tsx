@@ -1,28 +1,14 @@
 import Image from "next/image";
 import { cn } from "@/lib/cn";
 import { site } from "@/lib/site";
-import markSrc from "../../../public/brand/optivancesoft-mark.png";
+import logoCompact from "../../../public/brand/optivancesoft-logo-compact.svg";
+import logoCompactReversed from "../../../public/brand/optivancesoft-logo-compact-reversed.svg";
 
 /**
- * Official OptivanceSoft mark (hexagonal ribbon "O"), taken from the supplied
- * logo artwork in docs/brand. Decorative where it sits next to the wordmark.
- */
-export function LogoMark({ className, priority }: { className?: string; priority?: boolean }) {
-  return (
-    <Image
-      src={markSrc}
-      alt=""
-      aria-hidden="true"
-      sizes="48px"
-      priority={priority}
-      className={cn("size-9 shrink-0 select-none", className)}
-    />
-  );
-}
-
-/**
- * Logo lockup: mark + uppercase wordmark ("OPTIVANCE" + "SOFT"), optionally
- * with the slogan underneath, matching the supplied brand artwork.
+ * Official OptivanceSoft logo (vector artwork in docs/brand/vector).
+ * Uses the mark + wordmark lockup without the slogan line, which is too small
+ * to read at header size; when `tagline` is set the slogan is rendered as text,
+ * aligned under the wordmark as in the full lockup.
  */
 export function Logo({
   inverse,
@@ -30,7 +16,7 @@ export function Logo({
   priority,
   className,
 }: {
-  /** Light text for dark backgrounds. */
+  /** Reversed (light text) artwork for dark backgrounds. */
   inverse?: boolean;
   /** Show "Software that brings out your best." under the wordmark. */
   tagline?: boolean;
@@ -38,29 +24,25 @@ export function Logo({
   className?: string;
 }) {
   return (
-    <span className={cn("inline-flex items-center gap-2.5", className)}>
-      <LogoMark priority={priority} className={tagline ? "size-11" : undefined} />
-      <span className="flex flex-col">
+    <span className={cn("inline-flex flex-col", className)}>
+      <Image
+        src={inverse ? logoCompactReversed : logoCompact}
+        alt={site.name}
+        priority={priority}
+        unoptimized
+        className={cn("w-auto self-start select-none", tagline ? "h-11" : "h-9 sm:h-10")}
+      />
+      {tagline && (
         <span
           className={cn(
-            "font-display text-[1.0625rem] leading-none font-extrabold tracking-[-0.01em] uppercase sm:text-[1.1875rem]",
-            inverse ? "text-white" : "text-navy-950",
+            // The wordmark starts 21.3% into the lockup (47px at h-11); align the slogan with it.
+            "-mt-1 pl-[2.95rem] text-[0.5rem] sm:text-[0.5625rem] leading-none font-medium tracking-[0.24em] whitespace-nowrap uppercase",
+            inverse ? "text-[#C9D6E8]" : "text-[#4A5B72]",
           )}
         >
-          Optivance
-          <span className={inverse ? "text-[#3B8EFF]" : "text-brand-500"}>Soft</span>
+          {site.tagline}
         </span>
-        {tagline && (
-          <span
-            className={cn(
-              "mt-1.5 text-[0.5rem] leading-none font-medium tracking-[0.26em] whitespace-nowrap uppercase sm:text-[0.5625rem]",
-              inverse ? "text-muted-dark" : "text-muted",
-            )}
-          >
-            {site.tagline}
-          </span>
-        )}
-      </span>
+      )}
     </span>
   );
 }

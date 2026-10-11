@@ -6,17 +6,17 @@ export const ogSize = { width: 1200, height: 630 };
 
 async function loadAssets() {
   const dir = join(process.cwd(), "src/lib/og");
-  const [mark, display, text] = await Promise.all([
-    readFile(join(process.cwd(), "public/brand/optivancesoft-mark.png")),
+  const [logo, display, text] = await Promise.all([
+    readFile(join(process.cwd(), "public/brand/optivancesoft-logo-reversed.svg")),
     readFile(join(dir, "fonts/montserrat-latin-800-normal.woff")),
     readFile(join(dir, "fonts/montserrat-latin-500-normal.woff")),
   ]);
-  return { markSrc: `data:image/png;base64,${mark.toString("base64")}`, display, text };
+  return { logoSrc: `data:image/svg+xml;base64,${logo.toString("base64")}`, display, text };
 }
 
 /**
- * Branded social-sharing card rendered at build time, using the official mark
- * and Montserrat (bundled under the SIL Open Font License, see fonts/OFL.txt).
+ * Branded social-sharing card rendered at build time, using the official
+ * reversed logo (with slogan) and Montserrat (bundled under the SIL Open Font License, see fonts/OFL.txt).
  */
 export async function brandImage({
   eyebrow,
@@ -29,7 +29,7 @@ export async function brandImage({
   subtitle: string;
   accent?: string;
 }) {
-  const { markSrc, display, text } = await loadAssets();
+  const { logoSrc, display, text } = await loadAssets();
   return new ImageResponse(
     (
       <div
@@ -45,19 +45,8 @@ export async function brandImage({
           fontFamily: "Montserrat",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
-          {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse requires <img> */}
-          <img src={markSrc} width={84} height={84} alt="" />
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", fontSize: 44, fontWeight: 800, letterSpacing: -0.5 }}>
-              <span>OPTIVANCE</span>
-              <span style={{ color: "#3B8EFF" }}>SOFT</span>
-            </div>
-            <div style={{ display: "flex", marginTop: 8, fontSize: 15, fontWeight: 500, letterSpacing: 4.2, color: "#9FB0C6" }}>
-              SOFTWARE THAT BRINGS OUT YOUR BEST.
-            </div>
-          </div>
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse requires <img> */}
+        <img src={logoSrc} width={556} height={112} alt="" />
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div

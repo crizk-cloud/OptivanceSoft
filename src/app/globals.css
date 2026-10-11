@@ -7,7 +7,6 @@
  */
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-montserrat), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   --color-navy-950: #071a2f;
   --color-navy-800: #12325a;
