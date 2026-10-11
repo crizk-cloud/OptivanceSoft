@@ -18,6 +18,9 @@ export function ProductPageTemplate({ product }: { product: Product }) {
   const related = products.filter((p) => p.slug !== product.slug);
   // Pre-selects this product in the contact form.
   const contactHref = `/contact?product=${product.slug}`;
+  // Sections below the hero alternate white/surface, whichever optional ones render.
+  let sectionIndex = 0;
+  const nextTone = (): "white" | "surface" => (sectionIndex++ % 2 === 0 ? "white" : "surface");
 
   return (
     <div style={themeStyle(product)}>
@@ -77,7 +80,7 @@ export function ProductPageTemplate({ product }: { product: Product }) {
 
       {/* Overview (optional) */}
       {product.overview && (
-        <Section aria-labelledby="overview-title">
+        <Section tone={nextTone()} aria-labelledby="overview-title">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
             <SectionHeading accent id="overview-title" eyebrow="Overview" title={product.overview.title} />
             <div className="space-y-5 text-lg leading-relaxed text-muted">
@@ -90,7 +93,7 @@ export function ProductPageTemplate({ product }: { product: Product }) {
       )}
 
       {/* Features */}
-      <Section tone={product.overview ? "surface" : "white"} aria-labelledby="features-title">
+      <Section tone={nextTone()} aria-labelledby="features-title">
         <SectionHeading
           accent
           id="features-title"
@@ -115,8 +118,34 @@ export function ProductPageTemplate({ product }: { product: Product }) {
         </ul>
       </Section>
 
+      {/* Governance (optional) */}
+      {product.governance && (
+        <Section tone={nextTone()} aria-labelledby="governance-title">
+          <SectionHeading
+            accent
+            id="governance-title"
+            eyebrow="Trust by design"
+            title={product.governance.title}
+            description={product.governance.intro}
+          />
+          <ul className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            {product.governance.items.map(({ icon: ItemIcon, title, body }) => (
+              <li key={title} className="flex gap-4">
+                <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-(--accent-soft) text-(--accent-strong) ring-1 ring-(--accent-muted)">
+                  <ItemIcon className="size-5" aria-hidden strokeWidth={1.75} />
+                </span>
+                <div>
+                  <h3 className="font-semibold text-ink">{title}</h3>
+                  <p className="mt-1.5 leading-relaxed text-muted">{body}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
+
       {/* Benefits */}
-      <Section tone={product.overview ? "white" : "surface"} aria-labelledby="benefits-title">
+      <Section tone={nextTone()} aria-labelledby="benefits-title">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
           <SectionHeading
           accent
@@ -145,12 +174,16 @@ export function ProductPageTemplate({ product }: { product: Product }) {
       </Section>
 
       {/* Audience */}
-      <Section tone={product.overview ? "surface" : "white"} aria-labelledby="audience-title">
+      <Section tone={nextTone()} aria-labelledby="audience-title">
         <SectionHeading accent id="audience-title" eyebrow="Who it’s for" title="Designed for" />
         <ul
           className={cn(
             "mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-2",
-            product.audience.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4",
+            product.audience.length === 3
+              ? "lg:grid-cols-3"
+              : product.audience.length === 5
+                ? "lg:grid-cols-3 xl:grid-cols-5"
+                : "lg:grid-cols-4",
           )}
         >
           {product.audience.map((a) => (
@@ -166,7 +199,7 @@ export function ProductPageTemplate({ product }: { product: Product }) {
       </Section>
 
       {/* FAQ */}
-      <Section tone={product.overview ? "white" : "surface"} aria-labelledby="faq-title">
+      <Section tone={nextTone()} aria-labelledby="faq-title">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
           <div>
             <Eyebrow accent>FAQ</Eyebrow>

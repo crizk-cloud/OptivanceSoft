@@ -3,19 +3,29 @@ import type { CSSProperties } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   Activity,
+  Archive,
+  BadgeCheck,
   Building2,
   CalendarDays,
+  ChartColumn,
+  ClipboardCheck,
   ClipboardList,
+  Database,
   Eye,
   FileSignature,
   Fingerprint,
-  Flag,
   GraduationCap,
   Headset,
+  HeartPulse,
+  History,
   Home,
+  IdCard,
   KeyRound,
   LayoutDashboard,
   Leaf,
+  ListChecks,
+  Lock,
+  Medal,
   MessagesSquare,
   Network,
   Package,
@@ -24,7 +34,9 @@ import {
   ShoppingCart,
   Smartphone,
   Tags,
+  TrendingUp,
   Trophy,
+  UserCheck,
   Users,
   Warehouse,
   Wrench,
@@ -70,6 +82,8 @@ export type Product = {
   featuresHeading?: { eyebrow: string; title: string };
   /** Capabilities. Only what the product is confirmed to do. */
   features: ProductFeature[];
+  /** Optional security, privacy and governance principles. */
+  governance?: { title: string; intro: string; items: ProductFeature[] };
   /** Overrides the default "The problems it addresses" heading. */
   benefitsHeading?: { eyebrow: string; title: string; description: string };
   benefits: ProductBenefit[];
@@ -264,73 +278,195 @@ export const products: Product[] = [
   {
     slug: "athletix-school",
     name: "Athletix School",
-    category: "Athletic Program Management",
+    category: "Complete School Athletics Management System",
     industry: "School sports",
-    valueProp: "Bring structure and clarity to your school’s athletic program.",
+    valueProp: "Every athlete, team and season, connected in one place.",
     description:
-      "Manage teams, events, schedules, and athlete engagement for a more organized sports program.",
+      "Organize, manage and develop your school’s entire sports programme in one centralized system, from teams and training to health readiness and equipment.",
     icon: Trophy,
     image: athletixImage,
     imageAlt: "Sprinters set in their starting blocks on a red running track",
+    overview: {
+      title: "One home for your entire sports programme",
+      paragraphs: [
+        "Athletix School is an integrated athletics management platform designed to help educational institutions organize, manage and develop their entire sports programmes through one centralized system. It replaces fragmented spreadsheets, messaging groups and paper-based processes with structured digital workflows, reliable athletic records and coordinated communication between administrators, coaches, medical staff, students and families.",
+        "Built around the Athlete 360 profile, Athletix provides a comprehensive view of each student’s athletic journey, bringing together participation, training, performance, eligibility, health readiness, equipment and sporting history in one place. Role-based access and responsive interfaces give each user the information and tools relevant to their responsibilities, on a desktop computer, tablet or mobile phone, in the office or on the field.",
+      ],
+    },
+    featuresHeading: {
+      eyebrow: "Core modules and capabilities",
+      title: "Everything a school athletics programme needs",
+    },
     features: [
       {
+        icon: IdCard,
+        title: "Athlete 360",
+        body: "Maintains each athlete’s comprehensive athletic profile, including participation history, performance progress, training records, goals and relevant sporting information.",
+      },
+      {
         icon: Users,
-        title: "Team management",
-        body: "Organize your school’s teams and the people involved in them in one place.",
+        title: "Sports, Seasons & Teams",
+        body: "Organizes sports programmes, seasons, team structures, rosters and athlete assignments.",
+      },
+      {
+        icon: ClipboardCheck,
+        title: "Training & Attendance",
+        body: "Schedules training sessions, records attendance and check-ins, and helps coaches monitor participation.",
+      },
+      {
+        icon: Medal,
+        title: "Games & Tournaments",
+        body: "Manages fixtures, competitions, schedules, results and sporting events.",
+      },
+      {
+        icon: BadgeCheck,
+        title: "Registration & Eligibility",
+        body: "Coordinates athletic registration and participation requirements, with clear explanations of eligibility restrictions and the steps needed to resolve them.",
+      },
+      {
+        icon: TrendingUp,
+        title: "Fitness Testing & Personal Goals",
+        body: "Records fitness assessments, tracks individual development, and helps students monitor progress against their own historical performance.",
+      },
+      {
+        icon: HeartPulse,
+        title: "Health & Readiness",
+        body: "Supports injury records, health-related readiness information and participation clearance, while protecting sensitive medical information through restricted access.",
       },
       {
         icon: CalendarDays,
-        title: "Schedules",
-        body: "Keep team schedules organized and easy for everyone to follow.",
+        title: "Facilities & Bookings",
+        body: "Organizes sports facilities, availability, reservations and usage schedules.",
       },
       {
-        icon: Flag,
-        title: "Events",
-        body: "Plan and manage athletic events across your program.",
-      },
-      {
-        icon: Activity,
-        title: "Athlete engagement",
-        body: "Help keep athletes involved, informed and connected to their teams.",
+        icon: Package,
+        title: "Equipment & Inventory",
+        body: "Tracks sports equipment, storerooms, assignments and equipment availability.",
       },
       {
         icon: MessagesSquare,
-        title: "Program communication",
-        body: "Keep athletic staff, coaches and athletes on the same page.",
+        title: "Communication & Notifications",
+        body: "Supports coordinated communication between athletic administrators, coaches, students and families.",
+      },
+      {
+        icon: ChartColumn,
+        title: "Reports & Analytics",
+        body: "Provides operational reports and insights into participation, attendance, athletic development, teams, seasons and programme activities.",
       },
     ],
+    governance: {
+      title: "Security, privacy and governance",
+      intro:
+        "Athletix is designed around clear data ownership, responsible access and transparent decision-making.",
+      items: [
+        {
+          icon: Database,
+          title: "Clear data ownership",
+          body: "The school’s student information system remains the authoritative source for student identity, enrolment and year-group information. Athletix maintains the athletic record without modifying the school’s source student records.",
+        },
+        {
+          icon: Lock,
+          title: "Privacy-first health information",
+          body: "Medical details and readiness information are restricted to authorized medical personnel and families as appropriate. Coaches receive the participation-clearance information they need without unnecessary access to private medical details.",
+        },
+        {
+          icon: ListChecks,
+          title: "Transparent eligibility",
+          body: "Participation restrictions include clear reasons and actionable steps to help resolve them.",
+        },
+        {
+          icon: TrendingUp,
+          title: "Individual development",
+          body: "Performance tracking emphasizes each athlete’s personal progress over time rather than ranking students against one another.",
+        },
+        {
+          icon: History,
+          title: "Comprehensive audit trails",
+          body: "Sensitive changes are recorded with the responsible user, timestamp and before-and-after values.",
+        },
+        {
+          icon: UserCheck,
+          title: "Human-led decisions",
+          body: "Medical assessments and eligibility decisions remain under appropriate human authority rather than being delegated to AI.",
+        },
+        {
+          icon: Archive,
+          title: "Historical record preservation",
+          body: "Records are archived rather than permanently deleted, preserving the history of athletes, teams, activities and decisions.",
+        },
+      ],
+    },
+    benefitsHeading: {
+      eyebrow: "Key benefits",
+      title: "A connected, secure and data-informed programme",
+      description:
+        "Athletix School helps institutions manage their athletes, teams, training, competitions, facilities and resources while keeping student welfare, privacy and individual development at the centre of every decision.",
+    },
     benefits: [
       {
-        problem: "Programs managed across spreadsheets and messages",
-        solution: "Manage teams, events and schedules together in one organized system.",
+        problem: "Centralized management",
+        solution: "Consolidates the school’s sports operations into one integrated platform.",
       },
       {
-        problem: "Confusion over who plays when",
-        solution: "Give coaches and athletes a clear view of schedules and team activities.",
+        problem: "Improved coordination",
+        solution:
+          "Connects administrators, coaches, medical staff, students and families through consistent workflows.",
       },
       {
-        problem: "Athletes losing touch with the program",
-        solution: "Support athlete engagement with a program that is easier to follow.",
+        problem: "Better athlete development",
+        solution:
+          "Maintains a longitudinal view of individual progress, fitness, participation and goals.",
+      },
+      {
+        problem: "Safer information handling",
+        solution: "Protects sensitive health data through role-based access and clear privacy boundaries.",
+      },
+      {
+        problem: "Greater accountability",
+        solution:
+          "Makes eligibility requirements, administrative changes and operational decisions more transparent.",
+      },
+      {
+        problem: "Reduced administrative workload",
+        solution: "Replaces repetitive manual processes with structured records and digital workflows.",
+      },
+      {
+        problem: "Consistent historical records",
+        solution: "Preserves athletic history across seasons, teams and sporting activities.",
       },
     ],
     audience: [
-      { label: "Schools", body: "Schools running one or more athletic programs." },
-      { label: "Athletic directors", body: "Leaders overseeing the whole sports program." },
-      { label: "Coaches", body: "Staff organizing teams, practices and events." },
-      { label: "Sports administrators", body: "Teams handling athletic operations and logistics." },
+      {
+        label: "Athletic directors and administrators",
+        body: "Manage athletics operations centrally.",
+      },
+      { label: "Coaches", body: "Coordinate teams and training." },
+      { label: "Medical staff", body: "Manage protected health information." },
+      { label: "Equipment managers", body: "Oversee equipment and resources." },
+      { label: "Students and parents", body: "Access the information relevant to them." },
     ],
     faqs: [
       {
-        question: "Who is Athletix School designed for?",
+        question: "What is Athletix School?",
         answer:
-          "Athletix School is designed for schools and the people who run their sports programs: athletic directors, coaches and sports administrators.",
+          "Athletix School is an integrated athletics management platform that helps educational institutions organize, manage and develop their entire sports programme in one centralized system, built around each student’s Athlete 360 profile.",
+      },
+      {
+        question: "Who can see students’ medical information?",
+        answer:
+          "Medical details and readiness information are restricted to authorized medical personnel and families as appropriate. Coaches see the participation-clearance information they need, without unnecessary access to private medical details.",
+      },
+      {
+        question: "Does Athletix change our student information system records?",
+        answer:
+          "No. Your student information system remains the authoritative source for student identity, enrolment and year-group information. Athletix maintains the athletic record without modifying your source student records.",
+      },
+      {
+        question: "Can coaches use it on the field?",
+        answer:
+          "Yes. Athletix has a responsive design for desktop computers, tablets and smartphones, so athletics operations can continue both in the office and on the field.",
       },
       ...sharedFaqs("Athletix School"),
-      {
-        question: "Can Athletix School handle our specific sports and teams?",
-        answer:
-          "Athletix School is built to organize teams, events and schedules across a school athletic program. Contact us with the details of your program and we’ll confirm how it fits.",
-      },
     ],
     ctaLabel: CTA_LABEL,
     theme: { accent: "#E5372B", strong: "#C42B20", soft: "#FEF2F1", muted: "#FBC9C4" },
