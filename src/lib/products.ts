@@ -239,7 +239,7 @@ export const products: Product[] = [
       "Organize agricultural operations, track activities, manage resources, and make smarter decisions.",
     icon: Leaf,
     image: growManagerImage,
-    imageAlt: "A tractor working rows of green crops on farmland at sunrise",
+    imageAlt: "Rows of lettuce growing in hydroponic channels inside a bright greenhouse",
     features: [
       {
         icon: ClipboardList,
