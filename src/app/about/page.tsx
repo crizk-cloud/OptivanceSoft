@@ -8,12 +8,14 @@ import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import type { Feature } from "@/lib/content";
 import { products } from "@/lib/products";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About",
+export const metadata: Metadata = pageMetadata({
+  title: "About OptivanceSoft",
   description:
-    "OptivanceSoft builds software designed to help organizations work smarter, simplify operations, and bring out their best.",
-};
+    "OptivanceSoft builds software designed to help organizations work smarter, simplify operations, and bring out their best. Learn about our mission and approach.",
+  path: "/about",
+});
 
 const philosophy: Feature[] = [
   {

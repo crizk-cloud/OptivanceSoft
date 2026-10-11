@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { siteUrl } from "@/lib/seo";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -12,6 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: siteUrl(),
   title: {
     default: `${site.name} — ${site.tagline}`,
     template: `%s | ${site.name}`,
@@ -21,9 +23,11 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: site.name,
+    locale: "en",
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {

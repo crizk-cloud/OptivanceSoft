@@ -5,11 +5,14 @@ import { ContactDetails } from "@/components/sections/ContactDetails";
 import { PageHero } from "@/components/sections/PageHero";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { productHref, products } from "@/lib/products";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Help Center",
-  description: "Get help with OptivanceSoft products.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Help Center and Product Support",
+  description:
+    "Get help with Campus Call, Athletix School, Grow Manager and Service Hub from the OptivanceSoft team.",
+  path: "/support",
+});
 
 export default function SupportPage() {
   return (

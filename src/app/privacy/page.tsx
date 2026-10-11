@@ -4,8 +4,10 @@ import { LegalDocument, type LegalSection } from "@/components/legal/LegalDocume
 
 export const metadata: Metadata = {
   title: "Privacy Policy (Draft)",
+  description: "How OptivanceSoft collects, uses and protects personal information submitted through this website.",
   // Keep out of search results until the reviewed version is published.
   robots: { index: false, follow: true },
+  alternates: { canonical: "/privacy" },
 };
 
 const sections: LegalSection[] = [

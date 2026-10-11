@@ -4,8 +4,10 @@ import { LegalDocument, type LegalSection } from "@/components/legal/LegalDocume
 
 export const metadata: Metadata = {
   title: "Terms of Service (Draft)",
+  description: "The terms that govern use of the OptivanceSoft website.",
   // Keep out of search results until the reviewed version is published.
   robots: { index: false, follow: true },
+  alternates: { canonical: "/terms" },
 };
 
 const sections: LegalSection[] = [

@@ -8,13 +8,15 @@ import { ProductIcon } from "@/components/products/ProductCard";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Section";
 import { productHref, products } from "@/lib/products";
+import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata: Metadata = pageMetadata({
+  title: "Contact Us and Request a Demo",
   description:
-    "Talk to OptivanceSoft about Campus Call, Athletix School, Grow Manager or Service Hub, or request a demo.",
-};
+    "Talk to OptivanceSoft about Campus Call, Athletix School, Grow Manager or Service Hub, ask a question, or request a demo.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   const fallbackEmail = site.contact.email;

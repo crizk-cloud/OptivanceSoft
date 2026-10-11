@@ -3,6 +3,9 @@ import { productHref, products } from "./products";
 export const site = {
   name: "OptivanceSoft",
   tagline: "Software that brings out your best.",
+  /** Approved positioning statement. */
+  positioning:
+    "OptivanceSoft builds software designed to help organizations work smarter, simplify operations, and bring out their best.",
   description:
     "OptivanceSoft develops powerful, easy-to-use software that helps schools, sports programs, farms, and property businesses work smarter, communicate better, and achieve more.",
   /**

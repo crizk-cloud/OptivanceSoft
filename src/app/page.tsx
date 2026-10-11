@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
 import { HeroDevices } from "@/components/home/HeroDevices";
 import { ProductCard } from "@/components/products/ProductCard";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -8,10 +9,55 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow, Section, SectionHeading } from "@/components/ui/Section";
 import { benefits, highlights } from "@/lib/content";
 import { products } from "@/lib/products";
+import { pageMetadata, siteUrl } from "@/lib/seo";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = pageMetadata({
+  title: `${site.name} — Software for Schools, Sports Programs, Farms and Property`,
+  description: site.description,
+  path: "/",
+  absoluteTitle: true,
+});
+
+/**
+ * Structured data limited to verified facts: name, website, logo and the
+ * approved description. No address, founding date or reviews.
+ */
+function OrganizationJsonLd() {
+  const url = siteUrl().origin;
+  const data = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${url}/#organization`,
+        name: site.name,
+        url,
+        logo: `${url}/icon.svg`,
+        description: site.positioning,
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${url}/#website`,
+        name: site.name,
+        url,
+        publisher: { "@id": `${url}/#organization` },
+      },
+    ],
+  };
+  return (
+    <script
+      type="application/ld+json"
+      // JSON.stringify output is escaped for "<" so it cannot close the script tag.
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }}
+    />
+  );
+}
 
 export default function HomePage() {
   return (
     <>
+      <OrganizationJsonLd />
       <section aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-surface">
         <div
           aria-hidden="true"
