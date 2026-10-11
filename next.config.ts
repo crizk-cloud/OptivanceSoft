@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
+  async redirects() {
+    // There is no product index page; send it to the homepage's product section.
+    return [{ source: "/products", destination: "/#products", permanent: false }];
+  },
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {

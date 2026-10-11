@@ -35,7 +35,8 @@ export function ContactForm({
     product: productOptions.some((o) => o.value === defaultProduct) ? defaultProduct : "",
   }));
   const [clientErrors, setClientErrors] = useState<FieldErrors>({});
-  const [submitted, setSubmitted] = useState(false);
+  // True after a submission, including one made before hydration (no-JS POST).
+  const [submitted, setSubmitted] = useState(() => state.status !== "idle");
   // Time of first interaction, sent with the submission for the spam check.
   const startedAtRef = useRef(0);
   const summaryRef = useRef<HTMLDivElement>(null);
@@ -138,6 +139,9 @@ export function ContactForm({
   return (
     <form
       noValidate
+      // Without JavaScript the form still POSTs to the server action (no form
+      // data in the URL); with JavaScript, onSubmit validates first.
+      action={formAction}
       onSubmit={onSubmit}
       onFocusCapture={markStarted}
       aria-describedby="contact-required-note"

@@ -21,7 +21,9 @@ import {
   Wrench,
 } from "lucide-react";
 
-export type ProductSlug = "campus-call" | "athletix-school" | "grow-manager" | "service-hub";
+import type { ProductSlug } from "./productSlugs";
+
+export type { ProductSlug };
 
 export type ProductFeature = { icon: LucideIcon; title: string; body: string };
 export type ProductBenefit = { problem: string; solution: string };

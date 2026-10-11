@@ -124,6 +124,10 @@ at the hosting layer.
 Errors are logged without the submitter's personal details, and visitors only see a
 generic message.
 
+Without JavaScript the form still POSTs to the Server Action (form data never goes
+into the URL). Because the minimum-fill-time check needs JavaScript, such
+submissions are answered with an honest "not sent" message.
+
 ## Legal pages
 
 `/privacy` and `/terms` are **initial drafts**. They display a draft banner, are
@@ -138,6 +142,8 @@ pass `draft={false}` to `LegalDocument`, and remove the `robots` noindex metadat
 - `src/app/sitemap.ts` and `src/app/robots.ts` generate `/sitemap.xml` and
   `/robots.txt` from `SITE_URL`. Draft legal pages are excluded from the sitemap and
   marked `noindex`.
+- Unknown product URLs return a real 404 via `src/proxy.ts` (instead of a "soft 404"),
+  and `/products` redirects to the homepage's product section.
 - Social sharing images are generated at build time: `src/app/opengraph-image.tsx`
   for the site and `src/app/products/[slug]/opengraph-image.tsx` per product.
 - The homepage includes `Organization` and `WebSite` structured data limited to
