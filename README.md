@@ -63,7 +63,6 @@ src/
     legal/             Layout for Privacy Policy and Terms drafts
     products/          Product card (with industry photo), icon, dashboard preview and
                        the shared ProductPageTemplate
-    home/              Hero device illustration
   lib/
     products.ts        Typed product definitions: copy, features, benefits,
                        audience, FAQs, CTA label and colour theme
@@ -87,6 +86,7 @@ Official vector artwork lives in `docs/brand/vector/` (source of truth):
 | `public/brand/optivancesoft-mark.png` | 512px render of the mark for structured data |
 | `src/app/icon.svg`, `src/app/favicon.ico` | Browser icons generated from the mark |
 | `src/app/apple-icon.png` | Home-screen icon generated from the dark app icon |
+| `src/assets/hero-devices.jpg` | Homepage hero photo |
 | `src/assets/products/*.jpg` | Industry photos for the product cards (resized and served as WebP/AVIF by `next/image`) |
 | `src/lib/og/fonts/` | Montserrat (SIL Open Font License, `OFL.txt`) for social image text |
 

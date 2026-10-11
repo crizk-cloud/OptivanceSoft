@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
-import { HeroDevices } from "@/components/home/HeroDevices";
+import Image from "next/image";
+import heroImage from "@/assets/hero-devices.jpg";
 import { ProductCard } from "@/components/products/ProductCard";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
@@ -59,12 +60,22 @@ export default function HomePage() {
     <>
       <OrganizationJsonLd />
       <section aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-surface">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-[linear-gradient(rgb(16_37_66/0.045)_1px,transparent_1px),linear-gradient(90deg,rgb(16_37_66/0.045)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_at_70%_40%,black,transparent_70%)]"
-        />
-        <Container className="grid items-center gap-14 py-16 sm:py-20 lg:grid-cols-[1fr_1.05fr] lg:gap-12 lg:py-28">
-          <div>
+        {/* Wide screens: the photo fills the banner, faded on the left behind the text. */}
+        <div aria-hidden="true" className="absolute inset-0 -z-10 hidden xl:block">
+          <Image
+            src={heroImage}
+            alt=""
+            fill
+            loading="eager"
+            fetchPriority="high"
+            placeholder="blur"
+            sizes="100vw"
+            className="object-cover object-[70%_center]"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,#F5F8FC_0%,rgb(245_248_252/0.95)_36%,rgb(245_248_252/0.6)_52%,rgb(245_248_252/0)_68%)]" />
+        </div>
+        <Container className="py-14 sm:py-20 xl:flex xl:min-h-[38rem] xl:items-center xl:py-24">
+          <div className="max-w-2xl xl:max-w-[33rem] 2xl:max-w-2xl">
             <Eyebrow>Software that brings out your best.</Eyebrow>
             <h1
               id="hero-title"
@@ -88,8 +99,19 @@ export default function HomePage() {
               </ButtonLink>
             </div>
           </div>
-          <HeroDevices />
         </Container>
+        {/* Smaller screens: the photo sits below the text (same source, so one download). */}
+        <div className="relative aspect-[16/10] max-h-[32rem] w-full xl:hidden">
+          <Image
+            src={heroImage}
+            alt="Laptop, tablet and phone on a desk displaying software dashboards"
+            fill
+            loading="eager"
+            placeholder="blur"
+            sizes="100vw"
+            className="object-cover object-[75%_center]"
+          />
+        </div>
       </section>
 
       <Section id="products" aria-labelledby="products-title">

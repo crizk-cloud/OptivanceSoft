@@ -28,7 +28,7 @@ export function Logo({
       <Image
         src={inverse ? logoCompactReversed : logoCompact}
         alt={site.name}
-        priority={priority}
+        loading={priority ? "eager" : undefined}
         unoptimized
         className={cn("w-auto self-start select-none", tagline ? "h-11" : "h-9 sm:h-10")}
       />
