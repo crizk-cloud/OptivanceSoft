@@ -47,6 +47,7 @@ import campusCallImage from "@/assets/products/campus-call.jpg";
 import growManagerImage from "@/assets/products/grow-manager.jpg";
 import athletixLogo from "@/assets/products/logos/athletix-school.png";
 import athletixScreenshot from "@/assets/products/screens/athletix-school-dashboard.png";
+import campusCallScreenshot from "@/assets/products/screens/campus-call-dashboard.png";
 import campusCallLogo from "@/assets/products/logos/campus-call.png";
 import serviceHubImage from "@/assets/products/service-hub.jpg";
 import type { ProductSlug } from "./productSlugs";
@@ -130,6 +131,11 @@ export const products: Product[] = [
     icon: GraduationCap,
     image: campusCallImage,
     logo: campusCallLogo,
+    screenshot: {
+      src: campusCallScreenshot,
+      alt: "Campus Call administration portal dashboard showing student, staff, asset and pending-request totals, a weekly student attendance chart, asset status, recent activities and support tickets, with module navigation for attendance, school administration, IT, documents, assets, procurement, store, campus services, facilities, help desk and cyber security",
+      caption: "Campus Call administration portal (sample data).",
+    },
     imageAlt: "Students at their desks watching a teacher present in a bright classroom",
     overview: {
       title: "From fragmented tools to one connected campus",
