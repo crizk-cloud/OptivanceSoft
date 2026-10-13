@@ -2,19 +2,21 @@ import type { StaticImageData } from "next/image";
 import type { CSSProperties } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
-  Activity,
   Archive,
   BadgeCheck,
   Building2,
   CalendarDays,
+  Camera,
   ChartColumn,
   ClipboardCheck,
-  ClipboardList,
   Database,
-  Eye,
+  Droplet,
   FileSignature,
+  FileText,
   Fingerprint,
+  FlaskConical,
   GraduationCap,
+  Grid3x3,
   Headset,
   HeartPulse,
   History,
@@ -25,14 +27,21 @@ import {
   Leaf,
   ListChecks,
   Lock,
+  LogIn,
+  MailPlus,
   Medal,
   MessagesSquare,
   Network,
   Package,
+  QrCode,
+  RefreshCw,
   School,
+  Settings,
   ShieldAlert,
+  ShieldCheck,
   ShoppingCart,
   Smartphone,
+  Sprout,
   Tags,
   TrendingUp,
   Trophy,
@@ -495,73 +504,233 @@ export const products: Product[] = [
   },
   {
     slug: "grow-manager",
-    name: "Grow Manager",
-    category: "Farm Management System",
+    name: "GrowManager",
+    category: "Complete Farm Management System",
     industry: "Agriculture",
-    valueProp: "Organize your farm operations and see clearly what’s happening.",
+    valueProp: "Complete farm management, from seed to harvest.",
     description:
-      "Organize agricultural operations, track activities, manage resources, and make smarter decisions.",
+      "Bring your entire growing operation into one place, from seed batches and growing areas to daily tasks, harvests and product traceability.",
     icon: Leaf,
     image: growManagerImage,
     screenshot: {
       src: growManagerScreenshot,
-      alt: "Grow Manager dashboard showing total crops, water usage, mixing batches and active workers, crop distribution, weekly production yield, task progress, recent activities and a field overview map, with navigation for nursery, production, microgreens, progress, water testing, mixing log, daily tasks, mezclum, analytics, schedules, reports and admin",
-      caption: "Grow Manager dashboard (sample data).",
+      alt: "GrowManager dashboard showing total crops, water usage, mixing batches and active workers, crop distribution, weekly production yield, task progress, recent activities and a field overview map, with navigation for nursery, production, microgreens, progress, water testing, mixing log, daily tasks, mezclum, analytics, schedules, reports and admin",
+      caption: "GrowManager dashboard (sample data).",
     },
     imageAlt: "Rows of lettuce growing in hydroponic channels inside a bright greenhouse",
+    overview: {
+      title: "Connect every stage of production, from seed to finished product",
+      paragraphs: [
+        "GrowManager is a modern farm management system designed to bring your entire growing operation into one place. Originally developed for Hidroponía Elche, it provides a centralized platform for managing crops, growing areas, seed batches, production activities, microgreens, nutrient solutions, daily tasks, harvests and traceability.",
+        "Whether you operate a hydroponic greenhouse, a traditional farm, a plant nursery, a vertical farm or a mixed agricultural business, GrowManager helps your team organize production, monitor crop progress, reduce waste and make better decisions using real operational data.",
+        "GrowManager runs in any modern web browser on computers, tablets and mobile devices. Team members sign in with their Google accounts once an administrator has invited them, and role-based permissions ensure everyone sees the tools and information relevant to their responsibilities.",
+      ],
+    },
+    featuresHeading: {
+      eyebrow: "Core features",
+      title: "Everything your farm needs, from seed to harvest",
+    },
     features: [
       {
-        icon: ClipboardList,
-        title: "Operations organization",
-        body: "Organize your agricultural operations in one structured place.",
+        icon: LayoutDashboard,
+        title: "Dashboard",
+        body: "See the farm at a glance: active batches, production pools, seedlings and trays, microgreens output, outstanding tasks and key indicators across growing areas, varieties and periods.",
       },
       {
-        icon: Activity,
-        title: "Activity tracking",
-        body: "Record and follow farm activities so work is easy to review.",
+        icon: Sprout,
+        title: "Nursery Management",
+        body: "Register seed batches, record varieties, quantities and planting dates, organize trays, and track germination until seedlings are ready for transplanting.",
       },
       {
-        icon: Package,
-        title: "Resource management",
-        body: "Keep track of the resources your operation depends on.",
+        icon: Grid3x3,
+        title: "Production Management",
+        body: "Manage production through a visual grid of pools or growing areas, inspecting rows, trays, varieties, planting dates and days in growth. Adaptable to benches, field plots and vertical racks.",
       },
       {
-        icon: Eye,
-        title: "Operational visibility",
-        body: "Get a clear overview of your operations to support smarter decisions.",
+        icon: RefreshCw,
+        title: "Crop & Batch Lifecycle",
+        body: "Follow each batch from planting through transplanting, harvesting and completion, with its variety, location, quantities and operational history.",
+      },
+      {
+        icon: Leaf,
+        title: "Microgreens Management",
+        body: "Record plantings and track harvested, sold, discarded and growing product, with an activity log, lifecycle indicators and the status of active trays.",
+      },
+      {
+        icon: Camera,
+        title: "Crop Progress & AI Health Checks",
+        body: "Capture and organize photos of trays and growing areas, review progress over time, and use AI-assisted tray-health checks as decision support alongside expert inspection.",
+      },
+      {
+        icon: Droplet,
+        title: "Water Testing & Nutrients",
+        body: "Keep structured records of water tests and nutrient-solution measurements, such as pH and EC, linked to dates, batches or growing areas.",
+      },
+      {
+        icon: FlaskConical,
+        title: "Mixing Log",
+        body: "Document nutrient and solution preparation, including dates, details and quantities, so teams can follow repeatable procedures and troubleshoot differences.",
+      },
+      {
+        icon: ListChecks,
+        title: "Daily Tasks",
+        body: "Turn daily operations into a structured, printable task list organized by activity, growing area or workflow, from seeding and transplanting to harvesting and packaging.",
+      },
+      {
+        icon: QrCode,
+        title: "Mezclum & Traceability",
+        body: "Combine selected varieties into labelled mixes, record their components, and print QR-code labels that give customers access to the product’s traceability information.",
+      },
+      {
+        icon: ChartColumn,
+        title: "Analytics",
+        body: "Review production quantities, activity trends, crop and variety distribution, microgreens lifecycle and waste, and historical performance to support planning.",
+      },
+      {
+        icon: CalendarDays,
+        title: "Schedules",
+        body: "Plan recurring work and upcoming production activities, and coordinate growing, maintenance and harvesting.",
+      },
+      {
+        icon: FileText,
+        title: "Reports",
+        body: "Generate printable reports, with PDF or CSV exports where available, for management reviews, recordkeeping and analysis outside the application.",
+      },
+      {
+        icon: Settings,
+        title: "Administration & Configuration",
+        body: "Invite users, assign permissions, manage crop varieties and reference data, and configure production pool designs and layouts to match how your farm works.",
       },
     ],
+    governance: {
+      title: "Security and access control",
+      intro: "GrowManager is designed for controlled access within a farm team.",
+      items: [
+        {
+          icon: LogIn,
+          title: "Google sign-in",
+          body: "Users authenticate with their Google accounts.",
+        },
+        {
+          icon: MailPlus,
+          title: "Invitation-based access",
+          body: "An administrator must invite users before they can access the application.",
+        },
+        {
+          icon: Lock,
+          title: "Permission-gated modules",
+          body: "Access to each section is controlled according to assigned permissions.",
+        },
+        {
+          icon: UserCheck,
+          title: "Role-appropriate workflows",
+          body: "Team members can be given access to the tools needed for their work.",
+        },
+        {
+          icon: ShieldCheck,
+          title: "Centralized management",
+          body: "Authorized administrators manage users and supported application settings.",
+        },
+      ],
+    },
+    benefitsHeading: {
+      eyebrow: "The GrowManager advantage",
+      title: "One platform. Your farm. Your workflow.",
+      description:
+        "GrowManager brings production information, daily work and operational history together, instead of leaving them scattered across spreadsheets, paper records and separate tools.",
+    },
     benefits: [
       {
-        problem: "Activities tracked on paper or from memory",
-        solution: "Keep a structured record of farm activities that the whole team can rely on.",
+        problem: "Visibility across the operation",
+        solution: "See what is growing, what needs attention and how production is progressing.",
       },
       {
-        problem: "Limited view of resources",
-        solution: "See the resources your operation uses and manage them more deliberately.",
+        problem: "Consistent production records",
+        solution: "Keep a structured history of batches, measurements, mixes and activities.",
       },
       {
-        problem: "Decisions made without a clear picture",
-        solution: "Bring operational information together so decisions are better informed.",
+        problem: "Better coordination",
+        solution: "Organize daily activities and upcoming work so the team stays aligned.",
+      },
+      {
+        problem: "Crop progress and quantities",
+        solution: "Track each crop’s progress and product quantities from planting to harvest.",
+      },
+      {
+        problem: "Traceability to the finished product",
+        solution: "Connect finished products, including labelled mixes, to their recorded production information.",
+      },
+      {
+        problem: "Less waste, better planning",
+        solution: "Spot opportunities to reduce waste and improve planning using recorded data.",
+      },
+      {
+        problem: "Decisions based on real data",
+        solution: "Make operational decisions using recorded information rather than guesswork.",
       },
     ],
     audience: [
-      { label: "Farm owners", body: "Owners who want a clear view of their operation." },
-      { label: "Agricultural operators", body: "Businesses running day-to-day agricultural work." },
-      { label: "Farm managers", body: "Managers coordinating activities, people and resources." },
+      {
+        label: "Hydroponic farms",
+        body: "Manage pools, trays, crop batches, nutrient solutions and harvests.",
+      },
+      {
+        label: "Greenhouses",
+        body: "Organize growing zones, crop cycles, inspections and production tasks.",
+      },
+      {
+        label: "Vertical farms",
+        body: "Track growing racks, trays, varieties and production cycles.",
+      },
+      {
+        label: "Plant nurseries",
+        body: "Manage seed batches, germination, seedlings and transplanting.",
+      },
+      {
+        label: "Microgreens producers",
+        body: "Track planting, harvesting, sales, discards and product preparation.",
+      },
+      {
+        label: "Traditional farms",
+        body: "Organize plots, crop activities, inspections and daily operational records.",
+      },
+      {
+        label: "Mixed farms",
+        body: "Bring different crops and growing workflows into a shared management environment.",
+      },
     ],
     faqs: [
       {
-        question: "Who is Grow Manager designed for?",
+        question: "What is GrowManager?",
         answer:
-          "Grow Manager is designed for farm owners, agricultural operators and farm managers who want to organize their operations.",
+          "GrowManager is a farm management system that brings crops, growing areas, seed batches, production activities, microgreens, nutrient solutions, daily tasks, harvests and traceability into one centralized platform.",
       },
-      ...sharedFaqs("Grow Manager"),
       {
-        question: "Does Grow Manager connect to sensors, machinery or weather services?",
+        question: "What types of farms can use GrowManager?",
+        answer:
+          "Its approach adapts to hydroponic farms, greenhouses, vertical farms, plant nurseries, microgreens producers, traditional farms and mixed farms. The exact configuration of each workflow depends on the farm’s layout and operational needs.",
+      },
+      {
+        question: "Which devices does it work on?",
+        answer:
+          "GrowManager runs in any modern web browser, on computers, tablets and mobile devices.",
+      },
+      {
+        question: "How do team members get access?",
+        answer:
+          "An administrator invites each user, who then signs in with a Google account. Permissions assigned to each user control which modules they can access.",
+      },
+      {
+        question: "Do the AI health checks replace expert inspection?",
+        answer:
+          "No. AI-assisted tray-health checks help identify potential visual issues, but their assessments are decision-support information, not a replacement for expert inspection or laboratory testing.",
+      },
+      {
+        question: "Does GrowManager connect to sensors, machinery or weather services?",
         answer:
           "We don’t advertise any hardware or external data integrations on this site. If these matter to you, contact us and we’ll tell you what is currently available.",
       },
+      ...sharedFaqs("GrowManager"),
     ],
     ctaLabel: CTA_LABEL,
     theme: { accent: "#059669", strong: "#047857", soft: "#ECFDF5", muted: "#A7F3D0" },

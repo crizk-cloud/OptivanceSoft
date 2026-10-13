@@ -14,7 +14,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Contact Us and Request a Demo",
   description:
-    "Talk to OptivanceSoft about Campus Call, Athletix School, Grow Manager or Service Hub, ask a question, or request a demo.",
+    "Talk to OptivanceSoft about Campus Call, Athletix School, GrowManager or Service Hub, ask a question, or request a demo.",
   path: "/contact",
 });
 
