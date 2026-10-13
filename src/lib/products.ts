@@ -48,6 +48,7 @@ import growManagerImage from "@/assets/products/grow-manager.jpg";
 import athletixLogo from "@/assets/products/logos/athletix-school.png";
 import athletixScreenshot from "@/assets/products/screens/athletix-school-dashboard.png";
 import campusCallScreenshot from "@/assets/products/screens/campus-call-dashboard.png";
+import serviceHubScreenshot from "@/assets/products/screens/service-hub-dashboard.png";
 import campusCallLogo from "@/assets/products/logos/campus-call.png";
 import serviceHubImage from "@/assets/products/service-hub.jpg";
 import type { ProductSlug } from "./productSlugs";
@@ -569,6 +570,11 @@ export const products: Product[] = [
       "Manage properties, tenants, maintenance, and related operations with a centralized management solution.",
     icon: Building2,
     image: serviceHubImage,
+    screenshot: {
+      src: serviceHubScreenshot,
+      alt: "Service Hub dashboard showing total revenue, payments, expenses and net profit, net IVA and IRPF figures, IRPF refunds and payments, overdue payments, a six-month income versus expenses chart and revenue by service, with navigation for properties, clients, services, invoices, payments, expenses, reports, statements, taxes, settings and admin",
+      caption: "Service Hub dashboard (sample data).",
+    },
     imageAlt: "Modern apartment buildings with glass balconies along a landscaped street",
     features: [
       {
