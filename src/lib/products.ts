@@ -48,6 +48,7 @@ import growManagerImage from "@/assets/products/grow-manager.jpg";
 import athletixLogo from "@/assets/products/logos/athletix-school.png";
 import athletixScreenshot from "@/assets/products/screens/athletix-school-dashboard.png";
 import campusCallScreenshot from "@/assets/products/screens/campus-call-dashboard.png";
+import growManagerScreenshot from "@/assets/products/screens/grow-manager-dashboard.png";
 import serviceHubScreenshot from "@/assets/products/screens/service-hub-dashboard.png";
 import campusCallLogo from "@/assets/products/logos/campus-call.png";
 import serviceHubImage from "@/assets/products/service-hub.jpg";
@@ -502,6 +503,11 @@ export const products: Product[] = [
       "Organize agricultural operations, track activities, manage resources, and make smarter decisions.",
     icon: Leaf,
     image: growManagerImage,
+    screenshot: {
+      src: growManagerScreenshot,
+      alt: "Grow Manager dashboard showing total crops, water usage, mixing batches and active workers, crop distribution, weekly production yield, task progress, recent activities and a field overview map, with navigation for nursery, production, microgreens, progress, water testing, mixing log, daily tasks, mezclum, analytics, schedules, reports and admin",
+      caption: "Grow Manager dashboard (sample data).",
+    },
     imageAlt: "Rows of lettuce growing in hydroponic channels inside a bright greenhouse",
     features: [
       {
