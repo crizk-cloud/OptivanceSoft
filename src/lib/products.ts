@@ -46,6 +46,7 @@ import athletixImage from "@/assets/products/athletix-school.jpg";
 import campusCallImage from "@/assets/products/campus-call.jpg";
 import growManagerImage from "@/assets/products/grow-manager.jpg";
 import athletixLogo from "@/assets/products/logos/athletix-school.png";
+import athletixScreenshot from "@/assets/products/screens/athletix-school-dashboard.png";
 import campusCallLogo from "@/assets/products/logos/campus-call.png";
 import serviceHubImage from "@/assets/products/service-hub.jpg";
 import type { ProductSlug } from "./productSlugs";
@@ -80,6 +81,8 @@ export type Product = {
   imageAlt: string;
   /** Product logo (for light backgrounds), shown in place of the name on its page. */
   logo?: StaticImageData;
+  /** Real product screenshot; replaces the illustrative preview on the product page. */
+  screenshot?: { src: StaticImageData; alt: string; caption: string };
   /** Optional longer introduction shown after the hero. */
   overview?: { title: string; paragraphs: string[] };
   /** Overrides the default "Features" section heading. */
@@ -291,6 +294,11 @@ export const products: Product[] = [
     icon: Trophy,
     image: athletixImage,
     logo: athletixLogo,
+    screenshot: {
+      src: athletixScreenshot,
+      alt: "Athletix School dashboard showing athlete, team and attendance summaries, a participation chart, teams by sport, today’s schedule, recent activity, items needing attention, season progress, upcoming competitions and injury and health status",
+      caption: "Athletix School dashboard (sample data).",
+    },
     imageAlt: "Sprinters set in their starting blocks on a red running track",
     overview: {
       title: "One home for your entire sports programme",

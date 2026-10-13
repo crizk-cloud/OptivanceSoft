@@ -2,6 +2,7 @@ import { ArrowRight, Check, UserRound } from "lucide-react";
 import Image from "next/image";
 import { ProductCard } from "@/components/products/ProductCard";
 import { ProductDashboard } from "@/components/products/ProductDashboard";
+import { ProductScreenshot } from "@/components/products/ProductScreenshot";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ButtonLink } from "@/components/ui/Button";
@@ -100,7 +101,11 @@ export function ProductPageTemplate({ product }: { product: Product }) {
                 </ButtonLink>
               </div>
             </div>
-            <ProductDashboard product={product} />
+            {product.screenshot ? (
+              <ProductScreenshot product={product} />
+            ) : (
+              <ProductDashboard product={product} />
+            )}
           </div>
         </Container>
       </section>
