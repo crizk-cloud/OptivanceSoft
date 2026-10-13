@@ -150,6 +150,33 @@ export function ProductPageTemplate({ product }: { product: Product }) {
         </ul>
       </Section>
 
+      {/* How it works (optional) */}
+      {product.howItWorks && (
+        <Section tone={nextTone()} aria-labelledby="how-title">
+          <SectionHeading
+            accent
+            id="how-title"
+            eyebrow="How it works"
+            title={product.howItWorks.title}
+            description={product.howItWorks.intro}
+          />
+          <ol className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {product.howItWorks.steps.map((step, i) => (
+              <li key={step.title}>
+                <span
+                  aria-hidden="true"
+                  className="inline-flex size-10 items-center justify-center rounded-full bg-(--accent-strong) text-sm font-semibold text-white"
+                >
+                  {i + 1}
+                </span>
+                <h3 className="mt-4 font-semibold text-ink">{step.title}</h3>
+                <p className="mt-1.5 leading-relaxed text-muted">{step.body}</p>
+              </li>
+            ))}
+          </ol>
+        </Section>
+      )}
+
       {/* Governance (optional) */}
       {product.governance && (
         <Section tone={nextTone()} aria-labelledby="governance-title">
@@ -220,8 +247,8 @@ export function ProductPageTemplate({ product }: { product: Product }) {
         >
           {product.audience.map((a) => (
             <li key={a.label} className="border-t-2 border-(--accent) pt-5">
-              <div className="flex items-center gap-2">
-                <UserRound className="size-4 text-(--accent-strong)" aria-hidden />
+              <div className="flex items-start gap-2">
+                <UserRound className="mt-1 size-4 shrink-0 text-(--accent-strong)" aria-hidden />
                 <h3 className="font-semibold text-ink">{a.label}</h3>
               </div>
               <p className="mt-2 leading-relaxed text-muted">{a.body}</p>

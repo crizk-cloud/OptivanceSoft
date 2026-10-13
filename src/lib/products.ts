@@ -4,25 +4,31 @@ import type { LucideIcon } from "lucide-react";
 import {
   Archive,
   BadgeCheck,
+  BookOpen,
   Building2,
   CalendarDays,
   Camera,
   ChartColumn,
   ClipboardCheck,
+  Contact,
   Database,
+  DatabaseBackup,
   Droplet,
+  Eye,
+  FileCheck,
   FileSignature,
   FileText,
   Fingerprint,
   FlaskConical,
   GraduationCap,
   Grid3x3,
+  HandCoins,
   Headset,
   HeartPulse,
   History,
-  Home,
   IdCard,
-  KeyRound,
+  Landmark,
+  Languages,
   LayoutDashboard,
   Leaf,
   ListChecks,
@@ -33,9 +39,13 @@ import {
   MessagesSquare,
   Network,
   Package,
+  Palette,
+  PiggyBank,
   QrCode,
+  Receipt,
   RefreshCw,
   School,
+  ScrollText,
   Settings,
   ShieldAlert,
   ShieldCheck,
@@ -46,7 +56,9 @@ import {
   TrendingUp,
   Trophy,
   UserCheck,
+  UserCog,
   Users,
+  Wallet,
   Warehouse,
   Wrench,
 } from "lucide-react";
@@ -101,6 +113,8 @@ export type Product = {
   featuresHeading?: { eyebrow: string; title: string };
   /** Capabilities. Only what the product is confirmed to do. */
   features: ProductFeature[];
+  /** Optional numbered workflow ("How it works"). */
+  howItWorks?: { title: string; intro: string; steps: { title: string; body: string }[] };
   /** Optional security, privacy and governance principles. */
   governance?: { title: string; intro: string; items: ProductFeature[] };
   /** Overrides the default "The problems it addresses" heading. */
@@ -737,73 +751,291 @@ export const products: Product[] = [
   },
   {
     slug: "service-hub",
-    name: "Service Hub",
-    category: "Real Estate Management",
-    industry: "Real estate",
-    valueProp: "One central place to run your properties and the work around them.",
+    name: "ServiceHub",
+    category: "Business Management & Financial Control",
+    industry: "Property and service businesses",
+    valueProp: "One workspace. Clearer finances. Better business management.",
     description:
-      "Manage properties, tenants, maintenance, and related operations with a centralized management solution.",
+      "Bring properties, clients, services, invoicing, payments, expenses, tax administration and financial reporting together in one centralized workspace.",
     icon: Building2,
     image: serviceHubImage,
     screenshot: {
       src: serviceHubScreenshot,
-      alt: "Service Hub dashboard showing total revenue, payments, expenses and net profit, net IVA and IRPF figures, IRPF refunds and payments, overdue payments, a six-month income versus expenses chart and revenue by service, with navigation for properties, clients, services, invoices, payments, expenses, reports, statements, taxes, settings and admin",
-      caption: "Service Hub dashboard (sample data).",
+      alt: "ServiceHub dashboard showing total revenue, payments, expenses and net profit, net IVA and IRPF figures, IRPF refunds and payments, overdue payments, a six-month income versus expenses chart and revenue by service, with navigation for properties, clients, services, invoices, payments, expenses, reports, statements, taxes, settings and admin",
+      caption: "ServiceHub dashboard (sample data).",
     },
     imageAlt: "Modern apartment buildings with glass balconies along a landscaped street",
+    overview: {
+      title: "One platform. Every transaction. Complete business visibility.",
+      paragraphs: [
+        "ServiceHub is Rizk Corporation’s all-in-one business management platform. Originally developed to support Rizk Corporation’s rental and non-rental business activities, it provides a structured way to manage day-to-day operations, maintain financial records, track client balances and organize tax-related information.",
+        "Whether you operate a property rental business, manage buildings and units, provide professional services or run a company with multiple revenue streams, ServiceHub helps you maintain a clearer picture of your business and its financial position. By connecting operational records with invoices, payments, expenses, client statements and tax reports, it reduces fragmentation and makes important business information easier to manage, review and export.",
+        "The platform is available in English and Spanish, with invoices in either language. Access is managed centrally, so administrators control which pages each team member can view or edit.",
+      ],
+    },
+    featuresHeading: {
+      eyebrow: "Core features",
+      title: "Everything your business administration needs, in one place",
+    },
     features: [
       {
-        icon: Home,
-        title: "Property organization",
-        body: "Keep your properties and their details organized in one central place.",
-      },
-      {
-        icon: KeyRound,
-        title: "Tenant workflows",
-        body: "Keep tenant information and related processes structured and easy to follow.",
-      },
-      {
-        icon: Wrench,
-        title: "Maintenance coordination",
-        body: "Coordinate maintenance work so requests don’t fall through the cracks.",
-      },
-      {
         icon: LayoutDashboard,
-        title: "Operational oversight",
-        body: "See the state of your property operations from a single view.",
+        title: "Dashboard",
+        body: "Monitor revenue, payments, expenses and net profit, IVA and withholding balances, and overdue payments, with detailed reports one click away from each indicator.",
+      },
+      {
+        icon: Building2,
+        title: "Property Management",
+        body: "Keep a central register of buildings and units, with specifications, utility contracts, community and administrator details, and registry and cadastral references.",
+      },
+      {
+        icon: Contact,
+        title: "Client Management",
+        body: "Maintain one record per client, with contact and tax details, opening balances, documents and deposits, connected to their invoices, payments and statements.",
+      },
+      {
+        icon: BookOpen,
+        title: "Service Catalogue",
+        body: "Define your services, separate rental from non-rental activities, link services to properties and configure default IVA treatment.",
+      },
+      {
+        icon: Receipt,
+        title: "Invoicing",
+        body: "Issue sequentially numbered invoices in EUR, in English or Spanish, with service and tax details. Download them as PDF, send them by email and stamp them PAID once settled.",
+      },
+      {
+        icon: Wallet,
+        title: "Payments",
+        body: "Record payments against specific invoices or on their own, reconcile billed amounts against receipts, and identify outstanding and overdue invoices.",
+      },
+      {
+        icon: HandCoins,
+        title: "Expense Management",
+        body: "Classify expenses by category and provider, handle VAT and salary entries, attach receipts, and protect paid expense records against inappropriate changes.",
+      },
+      {
+        icon: PiggyBank,
+        title: "Security Deposits",
+        body: "Manage deposits as distinct obligations, not revenue, recording refunds, deductions and forfeitures and reflecting each movement in client statements.",
+      },
+      {
+        icon: Landmark,
+        title: "Spanish Tax Administration",
+        body: "Organize IVA records for Modelo 303 and IRPF withholding records for Modelos 111, 190, 115, 180, 123 and 193, with balances, settlements and supporting justificantes.",
+      },
+      {
+        icon: ScrollText,
+        title: "Client Statements",
+        body: "Give each client a chronological account history of invoices, payments, balances and deposit movements, exportable to PDF or Excel.",
+      },
+      {
+        icon: ChartColumn,
+        title: "Reports & Analytics",
+        body: "Analyze revenue, payments, expenses, net profit, profit and loss, and tax amounts, switching between registered-only and all-transactions views where supported.",
+      },
+      {
+        icon: UserCog,
+        title: "Administration & Access Control",
+        body: "Invite team members, assign page-level view and edit rights, and manage invoice numbering and default IVA settings centrally.",
+      },
+      {
+        icon: Palette,
+        title: "Branding & Documents",
+        body: "Configure company branding, numbering rules and default tax values so every invoice and PDF your business produces looks consistent.",
+      },
+      {
+        icon: DatabaseBackup,
+        title: "Data Export & Backup",
+        body: "Export supported business and financial data and back up application data and stored files, as part of your own retention and recovery policy.",
+      },
+      {
+        icon: FileCheck,
+        title: "Invoice Verification",
+        body: "Give recipients an online link to check that an invoice is authentic, without needing to contact you to confirm each document.",
       },
     ],
+    howItWorks: {
+      title: "From first record to financial review",
+      intro:
+        "Because every record shares one workspace, the information used for everyday administration also supports financial review, reporting and tax preparation.",
+      steps: [
+        {
+          title: "Register properties and clients",
+          body: "Set up the records that organize your business relationships and assets.",
+        },
+        {
+          title: "Define your services",
+          body: "Separate rental and non-rental activities and set property links and tax defaults.",
+        },
+        {
+          title: "Issue invoices",
+          body: "Create numbered invoices with the right service and tax information.",
+        },
+        {
+          title: "Record payments and expenses",
+          body: "Keep transaction records together with their supporting documents.",
+        },
+        {
+          title: "Track balances and deposits",
+          body: "Review client statements, unpaid invoices and deposit movements.",
+        },
+        {
+          title: "Organize tax information",
+          body: "Maintain IVA and IRPF records and their associated documentation.",
+        },
+        {
+          title: "Review and export reports",
+          body: "Understand financial performance and retain useful records.",
+        },
+        {
+          title: "Control team access",
+          body: "Give each user the permissions their responsibilities require.",
+        },
+      ],
+    },
+    governance: {
+      title: "Security, permissions and language",
+      intro:
+        "ServiceHub is designed for businesses that need a shared workspace without giving every team member unrestricted access.",
+      items: [
+        {
+          icon: Database,
+          title: "Centralized workspace",
+          body: "Business records are managed within one application.",
+        },
+        {
+          icon: Lock,
+          title: "Page-level permissions",
+          body: "Users receive access only to the pages assigned to them.",
+        },
+        {
+          icon: Eye,
+          title: "Separate viewing and editing rights",
+          body: "Permissions can reflect different responsibilities across the team.",
+        },
+        {
+          icon: Languages,
+          title: "English and Spanish",
+          body: "The application supports both languages, including invoice production.",
+        },
+        {
+          icon: ShieldCheck,
+          title: "Controlled financial workflows",
+          body: "Payments, expenses and deposits stay organized within their respective areas.",
+        },
+        {
+          icon: Archive,
+          title: "Export and backup",
+          body: "Supported data and stored files can be backed up or exported.",
+        },
+      ],
+    },
+    benefitsHeading: {
+      eyebrow: "The ServiceHub advantage",
+      title: "More than an invoicing tool or a property register",
+      description:
+        "ServiceHub connects operational records with billing, payments, expenses and financial administration, reducing the fragmentation that comes from managing them separately.",
+    },
     benefits: [
       {
-        problem: "Property records scattered across files and inboxes",
-        solution: "Centralize property and tenant information in one management solution.",
+        problem: "One record of properties, clients and services",
+        solution: "Keep the core of your business in a single, centralized register.",
       },
       {
-        problem: "Maintenance requests getting lost",
-        solution: "Give maintenance work a clear place to be tracked and coordinated.",
+        problem: "Consistent invoicing",
+        solution: "Issue consistent invoices and organize their delivery by PDF and email.",
       },
       {
-        problem: "Little oversight across a portfolio",
-        solution: "Bring related operations together so managers can see what needs attention.",
+        problem: "Clear balances and deposits",
+        solution: "Track payments, outstanding balances and security deposits in one place.",
+      },
+      {
+        problem: "Documented expenses",
+        solution: "Record business expenses and keep their supporting files alongside them.",
+      },
+      {
+        problem: "Centralized Spanish tax information",
+        solution: "Keep IVA and IRPF records and documents organized for periodic and annual reviews.",
+      },
+      {
+        problem: "Statements and reports on demand",
+        solution: "Generate client statements and financial reports from the same records.",
+      },
+      {
+        problem: "Shared access, under control",
+        solution: "Work as a team while each person sees and edits only what they should.",
+      },
+      {
+        problem: "Data you can take with you",
+        solution: "Export and back up supported data and documents.",
+      },
+      {
+        problem: "Verifiable invoices",
+        solution: "Give clients a convenient way to confirm an invoice is authentic.",
       },
     ],
     audience: [
-      { label: "Property owners", body: "Owners managing one or more properties." },
-      { label: "Real estate managers", body: "Managers responsible for properties and tenants." },
-      { label: "Property management businesses", body: "Companies running operations for clients." },
+      {
+        label: "Property rental companies",
+        body: "Manage properties, tenants, rental invoices, deposits and payments.",
+      },
+      {
+        label: "Property managers",
+        body: "Organize property information, client accounts and recurring administration.",
+      },
+      {
+        label: "Service providers",
+        body: "Manage service catalogues, client billing, expenses and reports.",
+      },
+      {
+        label: "Businesses with multiple revenue streams",
+        body: "Organize rental and non-rental activities within the same system.",
+      },
+      {
+        label: "Small and medium-sized companies",
+        body: "Centralize day-to-day financial administration instead of scattering it across tools.",
+      },
+      {
+        label: "Businesses operating in Spain",
+        body: "Organize supported IVA and IRPF information and its documentation.",
+      },
+      {
+        label: "Multi-user organizations",
+        body: "Share business records while assigning access by responsibility.",
+      },
     ],
     faqs: [
       {
-        question: "Who is Service Hub designed for?",
+        question: "What is ServiceHub?",
         answer:
-          "Service Hub is designed for property owners, real estate managers and property management businesses.",
+          "ServiceHub is a business management platform that brings properties, clients, services, invoicing, payments, expenses, tax administration and financial reporting together in one centralized workspace.",
       },
-      ...sharedFaqs("Service Hub"),
       {
-        question: "Does Service Hub handle rent payments, accounting or legal compliance?",
+        question: "Is ServiceHub only for property businesses?",
         answer:
-          "We don’t list payment, accounting or compliance features on this site. Contact us with your requirements and we’ll tell you what Service Hub currently supports.",
+          "No. It was built for a business combining rentals with other services, so it suits property rental companies and managers as well as service providers and companies with several revenue streams. Its suitability depends on your workflows, accounting requirements and legal obligations.",
       },
+      {
+        question: "Which languages does it support?",
+        answer:
+          "ServiceHub is available in English and Spanish, and invoices can be produced in either language.",
+      },
+      {
+        question: "Does ServiceHub file my Spanish tax returns?",
+        answer:
+          "No. It centralizes the records and documents behind IVA and IRPF models such as Modelo 303 and 111. Filing obligations, tax treatment and the accuracy of each declaration must still be checked against the applicable Spanish tax rules and your business’s circumstances.",
+      },
+      {
+        question: "What does invoice verification confirm?",
+        answer:
+          "It lets a recipient check online that an invoice is authentic according to ServiceHub’s verification mechanism. It is not a tax-authority certification and does not prove that the invoice has been paid.",
+      },
+      {
+        question: "Can I control what each team member sees?",
+        answer:
+          "Yes. Administrators invite team members and assign page-level permissions, with separate rights for viewing and editing.",
+      },
+      ...sharedFaqs("ServiceHub"),
     ],
     ctaLabel: CTA_LABEL,
     theme: { accent: "#7C4DFF", strong: "#5B33D6", soft: "#F4F0FF", muted: "#D9CCFF" },

@@ -10,7 +10,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Help Center and Product Support",
   description:
-    "Get help with Campus Call, Athletix School, GrowManager and Service Hub from the OptivanceSoft team.",
+    "Get help with Campus Call, Athletix School, GrowManager and ServiceHub from the OptivanceSoft team.",
   path: "/support",
 });
 
